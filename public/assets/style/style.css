@@ -1,0 +1,16 @@
+#main-head {
+	background-color: black;
+	height: 30px;
+	color: white;
+}
+
+#main-foot {
+	background-color: black;
+	height: 30px;
+	color: white;
+}
+
+#main-body {
+	margin-top: 50px;
+	margin-bottom: 50px
+}
