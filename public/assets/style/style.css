@@ -1,3 +1,6 @@
+body,html {
+	background-color: gainsboro;
+}
 
 #main-head {
 	text-align: center;
@@ -16,6 +19,7 @@
 #main-body {
 	margin-top: 50px;
 	margin-bottom: 50px;
+	background-color: gainsboro;
 }
 
 #main-display {
@@ -58,3 +62,4 @@
 #repup, #repdown {
 	border: 1px solid black;
 }
+

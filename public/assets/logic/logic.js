@@ -127,4 +127,17 @@ $(document).ready(()=>{
 			$("#rep-display").html(reps);
 		};
 	});
+
+	$("#submit-log").on("click", ()=>{
+		event.preventDefault();
+
+		$.ajax({
+			url: "/log",
+			method: 'POST',
+			data: {
+				"reps": reps,
+				"weight": total
+			}
+		})
+	})
 })
