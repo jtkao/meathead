@@ -38,19 +38,8 @@ function Barbell() {
 	this.clear = function() {
 		this.bar = [];
 	};
+
 }
-
-var me = new Barbell();
-
-me.load(me.plate);
-me.load(me.plate);
-me.load(me.plate);
-me.load(me.plate);
-me.add();
-console.log(me.bar_total);
-me.subtract(90);
-console.log(me.bar_total)
-
 
 module.exports = Barbell
 

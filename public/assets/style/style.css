@@ -1,3 +1,4 @@
+
 #main-head {
 	background-color: black;
 	height: 30px;
@@ -12,5 +13,33 @@
 
 #main-body {
 	margin-top: 50px;
-	margin-bottom: 50px
+	margin-bottom: 50px;
+}
+
+.b55 {
+	background-color: red;
+}
+
+.b45 {
+	background-color: blue;
+}
+
+.b35 {
+	background-color: yellow;
+}
+
+.b25 {
+	background-color: green;
+}
+
+.b10 {
+	background-color: gray;
+}
+
+.b5 {
+	background-color: lightgray;
+}
+
+.plate {
+	width: 80px;
 }
