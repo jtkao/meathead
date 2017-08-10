@@ -1,7 +1,6 @@
 var total = 0;
 // second element is the weight of the barbell added
 var barbell_accounted = [false, 0];
-// string
 var custom = "";
 
 var reps = 0;
@@ -33,7 +32,7 @@ $(document).ready(()=>{
 			total += 45;
 
 			$("#bb-display").html(total)
-			$("#bb-accounted").html("accounted for!")
+			$("#bb-accounted").html("accounted for! (45)")
 		} else {
 			barbell_accounted[0] = false;
 			
@@ -59,7 +58,7 @@ $(document).ready(()=>{
 			total += 55;
 
 			$("#bb-display").html(total)
-			$("#bb-accounted").html("accounted for!")
+			$("#bb-accounted").html("accounted for! (55)")
 		} else {
 			barbell_accounted[0] = false;
 			
@@ -80,8 +79,10 @@ $(document).ready(()=>{
 	$("#bb-clear").on("click",()=>{
 		barbell_accounted = [false, 0];
 		total = 0;
+		reps = 0;
 		$("#bb-display").html(total)
 		$("#bb-accounted").html("not accounted for!")
+		$("#rep-display").html(reps)
 	})
 
 	// LOADING WEIGHTS

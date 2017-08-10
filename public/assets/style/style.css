@@ -54,3 +54,7 @@
 	background-color: black;
 	color: white;
 }
+
+#repup, #repdown {
+	border: 1px solid black;
+}
