@@ -1,11 +1,13 @@
 
 #main-head {
+	text-align: center;
 	background-color: black;
 	height: 30px;
 	color: white;
 }
 
 #main-foot {
+	text-align: center;
 	background-color: black;
 	height: 30px;
 	color: white;
@@ -14,6 +16,10 @@
 #main-body {
 	margin-top: 50px;
 	margin-bottom: 50px;
+}
+
+#main-display {
+	text-align: center;
 }
 
 .b55 {
@@ -42,4 +48,9 @@
 
 .plate {
 	width: 80px;
+}
+
+#submit-log{
+	background-color: black;
+	color: white;
 }

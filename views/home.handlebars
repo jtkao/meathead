@@ -1,8 +1,15 @@
-<h1 id="bb-display"> 0 </h1>
+<div class="container-fluid">
+	<div class="row" id="main-display">
+		<div class="col-md-4"> <h1 id="bb-display"> 0 </h1> </div>
+		<div class="col-md-4"> <h1> x </h1> </div>
+		<div class="col-md-4"> <h1 id="rep-display"> 0 </h1> </div>
+	</div>
+</div>
 
 <div class="panel panel-default">
 	<div class="panel-heading"> 
 		barbell 
+		<a id="bb-accounted"> not accounted for! </a>
 	</div>
 
 	<div class="panel-body"> 
@@ -12,8 +19,11 @@
 	</div>
 </div>
 
-<div class="panel panel-default">
-  	<div class="panel-heading">load plate (on each side)</div>
+<div class="panel panel-default" id="load-box">
+  	<div class="panel-heading">
+  		<button class="btn" id="toggle-enter"> switch </button>
+  		load plate (on each side)
+  	</div>
 	<div class="btn-group panel-body">
 		<button class="btn plate b55" value="55"> <strong> 55 </strong> </button>
 		<button class="btn plate b45" value="45"> <strong> 45 </strong> </button>
@@ -24,3 +34,38 @@
 		<button class="btn plate b2.5" value="2.5"> <strong> 2.5 </strong> </button>
 	</div>
 </div>
+
+<div class="panel panel-default" id="enter-box">
+  	<div class="panel-heading">
+  		<button class="btn" id="toggle-load"> switch </button>
+  		enter weight 
+  		<a id="custom-display"> 0 </a> 
+  	</div>
+	<div class="btn-group panel-body">
+		<button class="btn numbtn" value="0"> <strong> 0 </strong> </button>
+		<button class="btn numbtn" value="1"> <strong> 1 </strong> </button>
+		<button class="btn numbtn" value="2"> <strong> 2 </strong> </button>
+		<button class="btn numbtn" value="3"> <strong> 3 </strong> </button>
+		<button class="btn numbtn" value="4"> <strong> 4 </strong> </button>
+		<button class="btn numbtn" value="5"> <strong> 5 </strong> </button>
+		<button class="btn numbtn" value="6"> <strong> 6 </strong> </button>
+		<button class="btn numbtn" value="7"> <strong> 7 </strong> </button>
+		<button class="btn numbtn" value="8"> <strong> 8 </strong> </button>
+		<button class="btn numbtn" value="9"> <strong> 9 </strong> </button>
+	</div>
+	<button class="btn" id="custom-backspace"> back </button>
+	<button class="btn" id="set-custom"> submit </button>
+</div>
+
+<div class="panel panel-default">
+  	<div class="panel-heading">
+  		reps 
+  	</div>
+
+	<div class="btn-group panel-body">
+		<button class="btn" id="repup"> <strong> +1 </strong> </button>
+		<button class="btn" id="repdown"> <strong> -1 </strong> </button>
+	</div>
+</div>
+
+<button class="btn" id="submit-log"> log </button>
