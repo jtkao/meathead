@@ -6,7 +6,7 @@
 	</div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" id="bb-box">
 	<div class="panel-heading"> 
 		barbell 
 		<a id="bb-accounted"> not accounted for! </a>
@@ -54,10 +54,10 @@
 		<button class="btn numbtn" value="9"> <strong> 9 </strong> </button>
 	</div>
 	<button class="btn" id="custom-backspace"> back </button>
-	<button class="btn" id="set-custom"> submit </button>
+	<button class="btn" id="set-custom"> set weight </button>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" id="rep-box">
   	<div class="panel-heading">
   		reps 
   	</div>
@@ -68,4 +68,51 @@
 	</div>
 </div>
 
-<button class="btn" id="submit-log"> log </button>
+<div class="panel panel-default" id="log-box">
+  	<div class="panel-heading">
+  		Log 
+  	</div>
+
+	<div class="btn-group panel-body">
+
+		<form class="form-inline" id="new-movement-form">
+
+			<div class="form-group">
+				<input type="text" class="form-control" id="new-movement-input" placeholder="name">
+			</div>
+
+			<div class="form-group">
+				<button class="btn" type="submit"> add movement </button>
+			</div>
+		</form>
+
+		<form class="form-inline" id="new-condition-form">
+
+			<div class="form-group">
+				<input type="text" class="form-control" id="new-condition-input" placeholder="name">
+			</div>
+
+			<div class="form-group">
+				<button class="btn" type="submit"> add condition </button>
+			</div>
+		</form>
+
+		<select>
+			{{#each movement}}
+                <option> {{name}}
+            {{/each}}
+        </select>
+
+        <select>
+			{{#each condition}}
+                <option> {{name}}
+            {{/each}}
+        </select>
+
+		<button class="btn" type="submit" id="submit-log"> submit </button>
+	</div>
+
+
+</div>
+
+<button class="btn" id="begin-log"> log </button>

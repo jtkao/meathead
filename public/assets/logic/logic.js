@@ -6,9 +6,8 @@ var custom = "";
 var reps = 0;
 
 $(document).ready(()=>{
-	console.log("hi");
-
 	$("#enter-box").hide();
+	$("#log-box").hide();
 
 	// SWITCH
 
@@ -128,15 +127,61 @@ $(document).ready(()=>{
 		};
 	});
 
-	$("#submit-log").on("click", ()=>{
+	// submit 
+
+	$("#begin-log").on("click", ()=>{
 		event.preventDefault();
 
+		$("#bb-box").hide();
+		$("#load-box").hide();
+		$("#enter-box").hide();
+		$("#rep-box").hide();
+		$("#begin-log").hide();
+		$("#log-box").show();
+	});
+
+	$("#submit-log").on("click", ()=>{
 		$.ajax({
 			url: "/log",
 			method: 'POST',
 			data: {
 				"reps": reps,
 				"weight": total
+			}
+		})
+
+		$("#bb-box").show();
+		$("#load-box").show();
+		$("#rep-box").show();
+		$("#begin-log").show();
+		$("#log-box").hide();
+	})
+
+	$("#new-movement-form").on("submit", ()=>{
+		event.preventDefault();
+		var movement = $("#new-movement-input").val().trim().toUpperCase();
+		console.log(movement)
+
+		$.ajax({
+			url: "/newmovement",
+			method: 'POST',
+			data: {
+				"movement": movement
+			}
+		})
+		
+	})
+
+	$("#new-condition-form").on("submit", ()=>{
+		event.preventDefault();
+		var condition = $("#new-condition-input").val().trim().toUpperCase();
+		console.log(condition)
+		
+		$.ajax({
+			url: "/newcondition",
+			method: 'POST',
+			data: {
+				"condition": condition
 			}
 		})
 	})

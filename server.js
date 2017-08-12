@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // controller 
 require('./controllers/controller.js')(app)
+require('./controllers/log_controller.js')(app)
 
 db.sequelize.sync(
 	// { force: true }
