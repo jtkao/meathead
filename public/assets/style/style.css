@@ -61,5 +61,21 @@ body,html {
 
 #repup, #repdown {
 	border: 1px solid black;
+	color: white;
+	background-color: steelblue;
+}
+
+#setup, #setdown {
+	border: 1px solid black;
+	color: white;
+	background-color: teal;
+}
+
+#set-display {
+	color: teal;
+}
+
+#rep-display {
+	color: steelblue;
 }
 

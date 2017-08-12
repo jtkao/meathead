@@ -1,8 +1,12 @@
 <div class="container-fluid">
 	<div class="row" id="main-display">
-		<div class="col-xs-4"> <h1 id="bb-display"> 0 </h1> </div>
-		<div class="col-xs-4"> <h1> x </h1> </div>
-		<div class="col-xs-4"> <h1 id="rep-display"> 0 </h1> </div>
+		<div class="col-xs-1"> </div>
+		<div class="col-xs-2"> <h1 id="bb-display"> 0 </h1> </div>
+		<div class="col-xs-2"> <h1>  </h1> </div>
+		<div class="col-xs-2"> <h1 id="set-display">  0 </h1> </div>
+		<div class="col-xs-2"> <h1>  x </h1> </div>
+		<div class="col-xs-2"> <h1 id="rep-display"> 0 </h1> </div>
+		<div class="col-xs-1"> </div>
 	</div>
 </div>
 
@@ -59,21 +63,41 @@
 
 <div class="panel panel-default" id="rep-box">
   	<div class="panel-heading">
-  		reps 
+  		sets x reps
   	</div>
+	
+	<div class="panel-body">
+		<label> sets </label>
+		<div class="btn-group">
+			<button class="btn" id="setup"> <strong> + </strong> </button>
+			<button class="btn" id="setdown"> <strong> - </strong> </button>
+		</div>
 
-	<div class="btn-group panel-body">
-		<button class="btn" id="repup"> <strong> +1 </strong> </button>
-		<button class="btn" id="repdown"> <strong> -1 </strong> </button>
+		<label> reps </label>
+		<div class="btn-group">
+			<button class="btn" id="repup"> <strong> + </strong> </button>
+			<button class="btn" id="repdown"> <strong> - </strong> </button>
+		</div>
 	</div>
 </div>
 
 <div class="panel panel-default" id="log-box">
-  	<div class="panel-heading">
+  	<div class="panel-heading" id="log-head">
   		Log 
   	</div>
 
 	<div class="btn-group panel-body">
+		<form class="form-inline">
+			<select class="form-control">
+				{{#each movement}}
+	                <option id={{id}}> {{name}} </option>
+	            {{/each}}
+	        </select>
+
+	        <button class="btn" type="submit" id="submit-log"> submit </button>
+        </form>
+
+        <br>
 
 		<form class="form-inline" id="new-movement-form">
 
@@ -96,20 +120,6 @@
 				<button class="btn" type="submit"> add condition </button>
 			</div>
 		</form>
-
-		<select>
-			{{#each movement}}
-                <option> {{name}}
-            {{/each}}
-        </select>
-
-        <select>
-			{{#each condition}}
-                <option> {{name}}
-            {{/each}}
-        </select>
-
-		<button class="btn" type="submit" id="submit-log"> submit </button>
 	</div>
 
 

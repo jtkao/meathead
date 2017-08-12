@@ -7,11 +7,7 @@ module.exports = function(app) {
 			var movements = data[0]
 			console.log(movements)
 			
-			db.sequelize.query("SELECT * FROM `conditions`").then((data)=>{
-				var conditions = data[0]
-				console.log(conditions)
-			res.render("home", {movement:movements, condition:conditions});
-			})
+			res.render("home", {movement:movements});
 		})
 	})
 

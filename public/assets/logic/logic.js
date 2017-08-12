@@ -4,6 +4,7 @@ var barbell_accounted = [false, 0];
 var custom = "";
 
 var reps = 0;
+var sets = 0;
 
 $(document).ready(()=>{
 	$("#enter-box").hide();
@@ -113,7 +114,7 @@ $(document).ready(()=>{
 		$("#custom-display").html(custom)
 	})
 
-	// REPS
+	// REPS x SETS
 
 	$("#repup").on("click", ()=>{
 		reps += 1;
@@ -127,10 +128,23 @@ $(document).ready(()=>{
 		};
 	});
 
+	$("#setup").on("click", ()=>{
+		sets += 1;
+		$("#set-display").html(sets);
+	});
+
+	$("#setdown").on("click", ()=>{
+		if (sets > 0) {
+			sets -= 1;
+			$("#set-display").html(sets);
+		};
+	});
+
 	// submit 
 
 	$("#begin-log").on("click", ()=>{
 		event.preventDefault();
+		$("#log-head").html(total + " " + sets + " x " + reps)
 
 		$("#bb-box").hide();
 		$("#load-box").hide();
