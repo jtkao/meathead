@@ -4,7 +4,7 @@ var barbell_accounted = [false, 0];
 var custom = "";
 
 var reps = 0;
-var sets = 0;
+var sets = 1;
 
 $(document).ready(()=>{
 	$("#enter-box").hide();
@@ -80,9 +80,11 @@ $(document).ready(()=>{
 		barbell_accounted = [false, 0];
 		total = 0;
 		reps = 0;
+		sets = 1;
 		$("#bb-display").html(total)
 		$("#bb-accounted").html("not accounted for!")
 		$("#rep-display").html(reps)
+		$("#set-display").html(sets)
 	})
 
 	// LOADING WEIGHTS
@@ -134,10 +136,13 @@ $(document).ready(()=>{
 	});
 
 	$("#setdown").on("click", ()=>{
-		if (sets > 0) {
-			sets -= 1;
+		if (sets === 1) {
+			sets = 1;
 			$("#set-display").html(sets);
-		};
+		} else if (sets >= 2) {
+			sets -= 1
+			$("#set-display").html(sets);
+		}
 	});
 
 	// submit 
@@ -155,14 +160,22 @@ $(document).ready(()=>{
 	});
 
 	$("#submit-log").on("click", ()=>{
+		event.preventDefault();
+
+		var movement = $("#select-movement").val();
+
+		console.log(movement + ": " + total + " " + sets + " x " + reps)
+
 		$.ajax({
 			url: "/log",
 			method: 'POST',
 			data: {
+				"sets": sets,
 				"reps": reps,
-				"weight": total
+				"weight": total,
+				"movementid": movement
 			}
-		})
+		});
 
 		$("#bb-box").show();
 		$("#load-box").show();

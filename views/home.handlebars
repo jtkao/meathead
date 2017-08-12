@@ -3,7 +3,7 @@
 		<div class="col-xs-1"> </div>
 		<div class="col-xs-2"> <h1 id="bb-display"> 0 </h1> </div>
 		<div class="col-xs-2"> <h1>  </h1> </div>
-		<div class="col-xs-2"> <h1 id="set-display">  0 </h1> </div>
+		<div class="col-xs-2"> <h1 id="set-display">  1 </h1> </div>
 		<div class="col-xs-2"> <h1>  x </h1> </div>
 		<div class="col-xs-2"> <h1 id="rep-display"> 0 </h1> </div>
 		<div class="col-xs-1"> </div>
@@ -88,9 +88,9 @@
 
 	<div class="btn-group panel-body">
 		<form class="form-inline">
-			<select class="form-control">
+			<select class="form-control" id="select-movement">
 				{{#each movement}}
-	                <option id={{id}}> {{name}} </option>
+	                <option value={{id}}> {{name}} </option>
 	            {{/each}}
 	        </select>
 
