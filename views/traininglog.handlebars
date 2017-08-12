@@ -1,0 +1,25 @@
+<div class="container-fluid"> 
+	<table class="table">
+		<thead>
+			<tr>
+				<th> MOVEMENT </th>
+				<th> WEIGHT </th>
+				<th> SETS </th>
+				<th> REPS </th>
+				<th> DATE </th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{{#each log}}
+			<tr>
+				<td> {{movement}} </td>
+				<td> {{weight}} </td>
+				<td> {{sets}} </td>
+				<td> {{reps}} </td>
+				<td> {{date}} </td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>

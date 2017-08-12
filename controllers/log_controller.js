@@ -14,18 +14,4 @@ module.exports = function(app) {
 
 		res.end();
 	})
-
-	app.post("/newcondition", (req,res)=>{
-		console.log("new condition")
-		var condition = req.body.condition;
-		console.log(condition);
-
-		db.Condition.findOrCreate({
-			where: {
-				name: condition
-			}
-		})
-
-		res.end();
-	})
 }

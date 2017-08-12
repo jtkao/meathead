@@ -1,6 +1,6 @@
-var total = 0;
+var total = 45;
 // second element is the weight of the barbell added
-var barbell_accounted = [false, 0];
+var barbell_accounted = [true, 45];
 var custom = "";
 
 var reps = 0;
@@ -197,19 +197,5 @@ $(document).ready(()=>{
 			}
 		})
 		
-	})
-
-	$("#new-condition-form").on("submit", ()=>{
-		event.preventDefault();
-		var condition = $("#new-condition-input").val().trim().toUpperCase();
-		console.log(condition)
-		
-		$.ajax({
-			url: "/newcondition",
-			method: 'POST',
-			data: {
-				"condition": condition
-			}
-		})
 	})
 })

@@ -59,6 +59,10 @@ body,html {
 	color: white;
 }
 
+#submit-log{
+	background-color: springgreen;
+}
+
 #repup, #repdown {
 	border: 1px solid black;
 	color: white;
@@ -77,5 +81,9 @@ body,html {
 
 #rep-display {
 	color: steelblue;
+}
+
+#add-movement-submit {
+	background-color: white;
 }
 

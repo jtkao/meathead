@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row" id="main-display">
 		<div class="col-xs-1"> </div>
-		<div class="col-xs-2"> <h1 id="bb-display"> 0 </h1> </div>
+		<div class="col-xs-2"> <h1 id="bb-display"> 45 </h1> </div>
 		<div class="col-xs-2"> <h1>  </h1> </div>
 		<div class="col-xs-2"> <h1 id="set-display">  1 </h1> </div>
 		<div class="col-xs-2"> <h1>  x </h1> </div>
@@ -13,7 +13,7 @@
 <div class="panel panel-default" id="bb-box">
 	<div class="panel-heading"> 
 		barbell 
-		<a id="bb-accounted"> not accounted for! </a>
+		<a id="bb-accounted"> accounted for! (45) </a>
 	</div>
 
 	<div class="panel-body"> 
@@ -28,7 +28,7 @@
   		<button class="btn" id="toggle-enter"> switch </button>
   		load plate (on each side)
   	</div>
-	<div class="btn-group panel-body">
+	<div class="form-inline panel-body">
 		<button class="btn plate b55" value="55"> <strong> 55 </strong> </button>
 		<button class="btn plate b45" value="45"> <strong> 45 </strong> </button>
 		<button class="btn plate b35" value="35"> <strong> 35 </strong> </button>
@@ -106,22 +106,10 @@
 			</div>
 
 			<div class="form-group">
-				<button class="btn" type="submit"> add movement </button>
-			</div>
-		</form>
-
-		<form class="form-inline" id="new-condition-form">
-
-			<div class="form-group">
-				<input type="text" class="form-control" id="new-condition-input" placeholder="name">
-			</div>
-
-			<div class="form-group">
-				<button class="btn" type="submit"> add condition </button>
+				<button class="btn" type="submit" id="add-movement-submit"> add movement </button>
 			</div>
 		</form>
 	</div>
-
 
 </div>
 
