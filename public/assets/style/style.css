@@ -3,9 +3,10 @@ body,html {
 }
 
 #main-head {
+	padding-top: 5px;
 	text-align: center;
 	background-color: black;
-	height: 30px;
+	height: 45px;
 	color: white;
 }
 
@@ -86,4 +87,3 @@ body,html {
 #add-movement-submit {
 	background-color: white;
 }
-
