@@ -1,12 +1,11 @@
 var mysql = require("mysql");
 
 var connection = mysql.createConnection({
-  port: 4200,   
-  host: "127.0.0.1",
+  port: 3306,   
+  host: "localhost",
   user: "root",
   password: "sdfccsdfcc",
-  database: "meathead",
-  connectionLimit: 5
+  database: "meathead"
 });
 
 // connect
