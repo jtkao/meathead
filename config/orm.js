@@ -8,7 +8,7 @@ var orm = {
 
 		connection.query(query_string, (error, result) => {
 			if (error) {throw error};
-			console.log("from the orm", result)
+			// console.log("from the orm", result)
 			cbf(result)
 		})
 	}

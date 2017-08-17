@@ -10,7 +10,7 @@ module.exports = function(app) {
 		// console.log("request body:", set);
 
 		sets_model.all((result)=>{
-			console.log("result from controller", result)
+			console.log("DATA READY:", result)
 			res.send("you made it");
 		})
 
