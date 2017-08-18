@@ -33,3 +33,9 @@ CREATE TABLE `set_conditions` (
     PRIMARY KEY(`set_id`, `condition_id`),
     INDEX (`set_id`)
 );
+
+CREATE TABLE `set_notes` (
+    `set_id` INT PRIMARY KEY,
+    `content` TEXT,
+    FOREIGN KEY (`set_id`) REFERENCES `sets`(`set_id`)
+);
