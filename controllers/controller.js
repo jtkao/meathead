@@ -1,19 +1,9 @@
 var sets = require("../models/sets_model")
 
 module.exports = function(app) {
-	app.get("/", (req,res) =>{
-		res.render("home", {movement:movements});
-	})
-
-	app.post("/log", (req, res)=>{
-		// var set = req.body;
-		// console.log("request body:", set);
-
-		res.end();
-
-	})
-
+	
 	app.post("/all_sets", (req, res)=>{
+
 		sets.all((result)=>{
 			res.send(result);
 		})
@@ -60,10 +50,6 @@ module.exports = function(app) {
 			res.send(result);
 		});
 	});
-
-	app.get("/traininglog", (req,res)=>{
-		res.render("traininglog")
-	});
-
+	
 // end controller
 };

@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // controller 
 require('./controllers/controller.js')(app)
-require('./controllers/log_controller.js')(app)
+require('./controllers/router.js')(app)
 
 app.listen(PORT, function() {
 	console.log("App listening on PORT " + PORT);
