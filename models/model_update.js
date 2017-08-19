@@ -37,10 +37,24 @@ var model_update = {
 			return result;
 		});
 	},
+	//
+	update_notes: function(set_id, updated_content, callback) {
+		orm_update.edit_set_notes(set_id, updated_content, (result)=>{
+			callback(result);
+			return result;
+		});
+	},
 	// UPDATE MOVEMENTS AND CONDITIONS
 	//
 	update_movement_name: function(movement_id, updated_name, callback) {
 		orm_update.edit_movement_name(movement_id, updated_name, (result)=>{
+			callback(result);
+			return result;
+		});
+	},
+	//
+	update_condition_name: function(condition_id, updated_name, callback) {
+		orm_update.edit_condition_name(condition_id, updated_name, (result)=>{
 			callback(result);
 			return result;
 		});

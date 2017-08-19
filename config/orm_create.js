@@ -46,8 +46,8 @@ var orm_create = {
 	},
 	// add_set_note
 	new_set_note: function(set_id, content, callback) {
-		query_string = "INSERT INTO `set_notes` (`set_id`,`content`) VALUES ("
-			+ set_id + ", '" + content + "');"
+		query_string = 'INSERT INTO `set_notes` (`set_id`,`content`) VALUES ('
+			+ set_id + ', "' + content + '");'
 		console.log(query_string)
 
 		connection.query(query_string, (error, result) => {

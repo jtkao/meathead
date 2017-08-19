@@ -57,11 +57,34 @@ var orm_update = {
 			callback(result);
 		});
 	},
+	//
+	edit_set_notes: function(set_id, updated_content, callback) {
+		var query_string = 'UPDATE `set_notes` SET `content`="' + updated_content 
+			+ '" WHERE `set_id`=' + set_id + ';'
+		console.log(query_string);
+
+		connection.query(query_string, (error, result) => {
+			if (error) {throw error};
+			callback(result);
+		});
+	},
 	// UPDATE MOVEMENTS AND CONDITIONS
 	//
 	edit_movement_name: function(movement_id, updated_name, callback) {
 		var query_string = "UPDATE `movements` SET `movement_name`='" + updated_name
 			+ "' WHERE `movement_id`=" + movement_id + ";"
+		console.log(query_string);
+
+		connection.query(query_string, (error, result) => {
+			if (error) {throw error};
+			callback(result);
+		});
+
+	},
+	//
+	edit_condition_name: function(condition_id, updated_name, callback) {
+		var query_string = "UPDATE `conditions` SET `condition_name`='" + updated_name
+			+ "' WHERE `condition_id`=" + condition_id + ";"
 		console.log(query_string);
 
 		connection.query(query_string, (error, result) => {

@@ -48,6 +48,15 @@ module.exports = function(app) {
 		});
 	});
 
+	app.post("/update_set_notes", (req, res)=>{
+		var set_id = 1;
+		var updated_content = "butter on thighs don't help the stretch reflex" ;
+
+		sets.update_notes(set_id, updated_content, (result)=>{
+			res.send(result);
+		});
+	});
+
 	// UPDATE MOVEMENT AND CONDITION NAMES
 
 	app.post("/update_movement_name", (req, res)=>{
@@ -55,6 +64,15 @@ module.exports = function(app) {
 		var updated_name = "LOW BAR SQUAT";
 
 		sets.update_movement_name(movement_id, updated_name, (result)=>{
+			res.send(result);
+		});
+	});
+
+	app.post("/update_condition_name", (req, res)=>{
+		var condition_id = 1;
+		var updated_name = "bovine growth hormone";
+
+		sets.update_condition_name(condition_id, updated_name, (result)=>{
 			res.send(result);
 		});
 	});
