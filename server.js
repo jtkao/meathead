@@ -13,7 +13,11 @@ app.use(express.static("./public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // controller 
-require('./controllers/controller.js')(app)
+require('./controllers/controller_create.js')(app)
+require('./controllers/controller_read.js')(app)
+require('./controllers/controller_update.js')(app)
+
+//router
 require('./controllers/router.js')(app)
 
 app.listen(PORT, function() {
