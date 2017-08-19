@@ -1,8 +1,8 @@
 var connection = require('./connection.js');
 
-var orm = {
+var orm_CR = {
 	// CREATE
-	//
+	// add_record
 	new_set: function(movement_id, weight, no_sets, no_reps, rpe, callback) {
 		query_string = "INSERT INTO `sets` (`set_date`,`movement_id`,`weight`,`no_sets`,`no_reps`, `rpe`) VALUES "
 			+ "(CURDATE(), " + movement_id + ", " + weight + ", " + no_sets + ", " + no_reps + ", " + rpe + ");"
@@ -13,7 +13,7 @@ var orm = {
 			callback(result);
 		});
 	},
-	//
+	// add_condition
 	new_condition: function(condition_name, callback) {
 		query_string = "INSERT INTO `conditions` (`condition_name`) VALUES ('" + condition_name + "');"
 		// console.log(query_string)
@@ -23,7 +23,7 @@ var orm = {
 			callback(result);
 		});
 	},
-	//
+	// add_movement
 	new_movement: function(movement_name, callback) {
 		query_string = "INSERT INTO `movements` (`movement_name`) VALUES ('" + movement_name + "');"
 		//console.log(query_string)
@@ -33,7 +33,7 @@ var orm = {
 			callback(result);
 		});
 	},
-	//
+	// add_set_condition
 	new_set_condition: function(set_id, condition_id, callback) {
 		query_string = "INSERT INTO `set_conditions` (`set_id`,`condition_id`) VALUES ("
 			+ set_id + ", " + condition_id + ");"
@@ -44,7 +44,7 @@ var orm = {
 			callback(result);
 		});
 	},
-	//
+	// add_set_note
 	new_set_note: function(set_id, content, callback) {
 		query_string = "INSERT INTO `set_notes` (`set_id`,`content`) VALUES ("
 			+ set_id + ", '" + content + "');"
@@ -100,7 +100,7 @@ var orm = {
 		});
 	},
 	// find_notes
-	select_notes: function(set_id, callback) {
+	select_set_notes: function(set_id, callback) {
 		query_string = "SELECT * FROM `set_notes` WHERE (`set_id`=" + set_id + ");"
 		//console.log(query_string)
 
@@ -110,7 +110,7 @@ var orm = {
 		});
 	},
 	// find_conditions
-	select_conditions: function(set_id, callback) {
+	select_set_conditions: function(set_id, callback) {
 		query_string = "SELECT * FROM `set_conditions` NATURAL JOIN `conditions` WHERE (`set_id`=" + set_id + ");"
 
 		//console.log(query_string)
@@ -120,10 +120,8 @@ var orm = {
 			callback(result);
 		});
 	}
-	// UPDATE
-	// DELETE
-// end orm
+// end orm_CR
 };
 
-module.exports = orm;
+module.exports = orm_CR;
 

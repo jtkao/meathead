@@ -79,7 +79,7 @@ module.exports = function(app) {
 		});
 	});
 
-	app.post("/find_notes", (req,res)=>{
+	app.post("/find_set_notes", (req,res)=>{
 		var set_id = 1;
 
 		sets.find_notes(set_id, (result)=>{
@@ -87,7 +87,7 @@ module.exports = function(app) {
 		});
 	});
 
-	app.post("/find_conditions", (req,res)=>{
+	app.post("/find_set_conditions", (req,res)=>{
 		var set_id = 5;
 
 		sets.find_conditions(set_id, (result)=>{
