@@ -19,7 +19,7 @@ module.exports = function(app) {
 
 		sets.add_condition(condition_name, (result)=>{
 			res.send(result)
-		})
+		});
 	});
 
 	app.post("/add_movement", (req, res)=>{
@@ -27,13 +27,31 @@ module.exports = function(app) {
 
 		sets.add_movement(movement_name, (result)=>{
 			res.send(result)
-		})
+		});
 	});
-	
+
+	app.post("/add_set_condition", (req, res)=>{
+		var set_id = 13;
+		var condition_id = 5;
+
+		sets.add_set_condition(set_id, condition_id, (result)=>{
+			res.send(result)
+		});
+	});
+
+	app.post("/add_set_note", (req, res)=>{
+		var set_id = 13;
+		var content = "well duh it was raw";
+
+		sets.add_set_note(set_id, content, (result)=>{
+			res.send(result)
+		});
+	})
+
 	app.post("/all_sets", (req, res)=>{
 		sets.all((result)=>{
 			res.send(result);
-		})
+		});
 	});
 
 	app.post("/set_on_date", (req, res)=>{

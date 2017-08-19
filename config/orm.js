@@ -26,6 +26,28 @@ var orm = {
 	//
 	new_movement: function(movement_name, callback) {
 		query_string = "INSERT INTO `movements` (`movement_name`) VALUES ('" + movement_name + "');"
+		//console.log(query_string)
+
+		connection.query(query_string, (error, result) => {
+			if (error) {throw error};
+			callback(result);
+		});
+	},
+	//
+	new_set_condition: function(set_id, condition_id, callback) {
+		query_string = "INSERT INTO `set_conditions` (`set_id`,`condition_id`) VALUES ("
+			+ set_id + ", " + condition_id + ");"
+		//console.log(query_string)
+
+		connection.query(query_string, (error, result) => {
+			if (error) {throw error};
+			callback(result);
+		});
+	},
+	//
+	new_set_note: function(set_id, content, callback) {
+		query_string = "INSERT INTO `set_notes` (`set_id`,`content`) VALUES ("
+			+ set_id + ", '" + content + "');"
 		console.log(query_string)
 
 		connection.query(query_string, (error, result) => {

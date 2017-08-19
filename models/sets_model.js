@@ -64,6 +64,18 @@ var sets_model = {
 			callback(result);
 			return result;
 		})
+	},
+	add_set_condition: function(set_id, condition_id, callback) {
+		orm.new_set_condition(set_id, condition_id, (result)=>{
+			callback(result);
+			return result;
+		})
+	},
+	add_set_note: function(set_id, content, callback) {
+		orm.new_set_note(set_id, content, (result)=>{
+			callback(result);
+			return result;
+		})
 	}
 };
 
