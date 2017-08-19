@@ -43,6 +43,27 @@ var sets_model = {
 			callback(result);
 			return result;
 		});
+	},
+	//
+	add_record: function(movement_id, weight, no_sets, no_reps, rpe, callback) {
+		orm.new_set(movement_id, weight, no_sets, no_reps, rpe, (result)=>{
+			callback(result);
+			return result;
+		})
+	},
+	//
+	add_condition: function(condition_name, callback) {
+		orm.new_condition(condition_name, (result)=>{
+			callback(result);
+			return result;
+		})
+	},
+	//
+	add_movement: function(movement_name, callback) {
+		orm.new_movement(movement_name, (result)=>{
+			callback(result);
+			return result;
+		})
 	}
 };
 

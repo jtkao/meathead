@@ -1,7 +1,39 @@
 var connection = require('./connection.js');
 
 var orm = {
+	// CREATE
+	//
+	new_set: function(movement_id, weight, no_sets, no_reps, rpe, callback) {
+		query_string = "INSERT INTO `sets` (`set_date`,`movement_id`,`weight`,`no_sets`,`no_reps`, `rpe`) VALUES "
+			+ "(CURDATE(), " + movement_id + ", " + weight + ", " + no_sets + ", " + no_reps + ", " + rpe + ");"
+		// console.log(query_string)
 
+		connection.query(query_string, (error, result) => {
+			if (error) {throw error};
+			callback(result);
+		});
+	},
+	//
+	new_condition: function(condition_name, callback) {
+		query_string = "INSERT INTO `conditions` (`condition_name`) VALUES ('" + condition_name + "');"
+		// console.log(query_string)
+
+		connection.query(query_string, (error, result) => {
+			if (error) {throw error};
+			callback(result);
+		});
+	},
+	//
+	new_movement: function(movement_name, callback) {
+		query_string = "INSERT INTO `movements` (`movement_name`) VALUES ('" + movement_name + "');"
+		console.log(query_string)
+
+		connection.query(query_string, (error, result) => {
+			if (error) {throw error};
+			callback(result);
+		});
+	},
+	// READ
 	// all
 	select_all: function(callback) {
 		query_string = "SELECT * FROM `sets` NATURAL JOIN `movements`";
@@ -66,7 +98,8 @@ var orm = {
 			callback(result);
 		});
 	}
-
+	// UPDATE
+	// DELETE
 // end orm
 };
 
