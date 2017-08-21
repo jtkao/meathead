@@ -6,6 +6,58 @@ var custom = "";
 var reps = 0;
 var sets = 1;
 
+var barbell_emulator = "=========[45]==========";
+
+function reset() {
+	var barbell_accounted = [false, 0];
+	var barbell_emulator = "=========[45]=========="
+	var total = 45;
+	var reps = 0;
+	var sets = 1;
+
+	$("#bb-display").html(total);
+	$("#bb-accounted").html("not accounted for!");
+	$("#rep-display").html(reps);
+	$("#set-display").html(sets);
+	$("#bb-emulator").html(barbell_emulator);
+};
+
+function barbell_control (weight, opposite) {
+	console.log("before", barbell_accounted)
+	if (!barbell_accounted[0]) {
+		barbell_accounted[0] = true;
+		barbell_accounted[1] = weight;
+		total += weight;
+		var first_half = barbell_emulator.substr(0, (barbell_emulator.length/2)-1);
+		var second_half = barbell_emulator.substr((barbell_emulator.length/2)+1, (barbell_emulator.length));
+
+		barbell_emulator = first_half + weight + second_half;
+
+		$("#bb-display").html(total)
+		$("#bb-accounted").html("accounted for! " + weight + " lbs.")
+		$("#bb-emulator").html(barbell_emulator)
+	} else {
+		barbell_accounted[0] = false;
+			
+		// set <barbell weight ONLY> = 0 IF bar weight is accounted for
+		if (barbell_accounted[1] === weight) {
+			total -= weight;
+		} else if (barbell_accounted[1] === opposite) {
+			total -= opposite;
+		}
+
+		var first_half = barbell_emulator.substr(0, (barbell_emulator.length/2)-1);
+		var second_half = barbell_emulator.substr((barbell_emulator.length/2)+1, (barbell_emulator.length));
+
+		barbell_emulator = first_half + "00" + second_half;
+
+		$("#bb-display").html(total);
+		$("#bb-accounted").html("not accounted for!");
+		$("#bb-emulator").html(barbell_emulator);
+	};
+};
+
+
 $(document).ready(()=>{
 	$("#enter-box").hide();
 	$("#log-box").hide();
@@ -15,85 +67,45 @@ $(document).ready(()=>{
 	$("#toggle-enter").on("click", ()=>{
 		$("#load-box").hide();
 		$("#enter-box").show();
-	})
+		reset();
+	});
 
 	$("#toggle-load").on("click", ()=>{
 		$("#enter-box").hide();
 		$("#load-box").show();
-	})
+		reset();
+	});
 
 	// BARBELL
 
 	$("#bb45").on("click", ()=>{
-		console.log("before", barbell_accounted)
-		if (!barbell_accounted[0]) {
-			barbell_accounted[0] = true;
-			barbell_accounted[1] = 45;
-			total += 45;
-
-			$("#bb-display").html(total)
-			$("#bb-accounted").html("accounted for! (45)")
-		} else {
-			barbell_accounted[0] = false;
-			
-			// set <barbell weight ONLY> IF bar weight is accounted for
-			if (barbell_accounted[1] === 55) {
-				total -= 55;
-			} else if (barbell_accounted[1] === 45) {
-				total -= 45;
-			}
-
-
-			$("#bb-display").html(total)
-			$("#bb-accounted").html("not accounted for!")
-		}
-		console.log("after", barbell_accounted)
+		barbell_control(45,55);
 	});
 
 	$("#bb55").on("click", ()=>{
-		console.log("before", barbell_accounted)
-		if (!barbell_accounted[0]) {
-			barbell_accounted[0] = true;
-			barbell_accounted[1] = 55;
-			total += 55;
-
-			$("#bb-display").html(total)
-			$("#bb-accounted").html("accounted for! (55)")
-		} else {
-			barbell_accounted[0] = false;
-			
-			// set <barbell weight ONLY> = 0 IF bar weight is accounted for
-			if (barbell_accounted[1] === 55) {
-				total -= 55;
-			} else if (barbell_accounted[1] === 45) {
-				total -= 45;
-			}
-
-			$("#bb-display").html(total)
-			$("#bb-accounted").html("not accounted for!")
-		}
-		console.log("after", barbell_accounted)
+		barbell_control(55,45);
 	});
 
 	// clears the entire 
 	$("#bb-clear").on("click",()=>{
-		barbell_accounted = [false, 0];
-		total = 0;
-		reps = 0;
-		sets = 1;
-		$("#bb-display").html(total)
-		$("#bb-accounted").html("not accounted for!")
-		$("#rep-display").html(reps)
-		$("#set-display").html(sets)
-	})
+		reset();
+	});
 
 	// LOADING WEIGHTS
 
 	$(".plate").on("click", (me)=>{
 		weight = me.currentTarget.value;
-		total += (parseInt(weight) * 2)
+		total += (parseFloat(weight) * 2)
+
+		var plate = " [" + weight + "] ";
+		console.log(barbell_emulator)
+
+		var loaded = plate + barbell_emulator + plate;
+		barbell_emulator = loaded;
+
 
 		$("#bb-display").html(total)
+		$("#bb-emulator").html(barbell_emulator);
 	});
 
 	// CUSTOM
@@ -101,20 +113,20 @@ $(document).ready(()=>{
 	$(".numbtn").on("click", (me)=>{
 		number = me.currentTarget.value;
 		custom += number;
-		$("#custom-display").html(custom)
-	})
+		$("#custom-display").html(custom);
+	});
 
 	$("#set-custom").on("click", ()=>{
 		total = parseInt(custom);
 		custom = "";
 		$("#custom-display").html("0");
 		$("#bb-display").html(total);
-	})
+	});
 
 	$("#custom-backspace").on("click", ()=>{
-		custom = custom.substring(0, custom.length-1)
-		$("#custom-display").html(custom)
-	})
+		custom = custom.substring(0, custom.length-1);
+		$("#custom-display").html(custom);
+	});
 
 	// REPS x SETS
 
@@ -177,12 +189,14 @@ $(document).ready(()=>{
 			}
 		});
 
+		reset();
+
 		$("#bb-box").show();
 		$("#load-box").show();
 		$("#rep-box").show();
 		$("#begin-log").show();
 		$("#log-box").hide();
-	})
+	});
 
 	$("#new-movement-form").on("submit", ()=>{
 		event.preventDefault();
@@ -196,7 +210,6 @@ $(document).ready(()=>{
 				"movement": movement
 			}
 		})
-		
-	})
+	});
 
-})
+});

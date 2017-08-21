@@ -1,3 +1,11 @@
+<div class="panel panel-default" id="bb-box">
+	<div class="panel-body"> 
+		<button class="btn" id="bb45"> 45lb barbell </button>
+		<button class="btn" id="bb55"> 55lb barbell </button>
+		<button class="btn" id="bb-clear"> clear barbell </button>
+	</div>
+</div>
+
 <div class="container-fluid">
 	<div class="row" id="main-display">
 		<div class="col-xs-1"> </div>
@@ -10,24 +18,8 @@
 	</div>
 </div>
 
-<div class="panel panel-default" id="bb-box">
-	<div class="panel-heading"> 
-		barbell 
-		<a id="bb-accounted"> accounted for! (45) </a>
-	</div>
-
-	<div class="panel-body"> 
-		<button class="btn" id="bb45"> 45lb barbell </button>
-		<button class="btn" id="bb55"> 55lb barbell </button>
-		<button class="btn" id="bb-clear"> clear barbell </button>
-	</div>
-</div>
-
 <div class="panel panel-default" id="load-box">
-  	<div class="panel-heading">
-  		<button class="btn" id="toggle-enter"> switch </button>
-  		load plate (on each side)
-  	</div>
+	<div class="panel-heading" id="bb-emulator"> =========[45]========== </div>
 	<div class="form-inline panel-body">
 		<button class="btn plate b55" value="55"> <strong> 55 </strong> </button>
 		<button class="btn plate b45" value="45"> <strong> 45 </strong> </button>
@@ -36,12 +28,12 @@
 		<button class="btn plate b10" value="10"> <strong> 10 </strong> </button>
 		<button class="btn plate b5" value="5"> <strong> 5 </strong> </button>
 		<button class="btn plate b2.5" value="2.5"> <strong> 2.5 </strong> </button>
+		<button class="btn" id="toggle-enter"> switch </button>
 	</div>
 </div>
 
 <div class="panel panel-default" id="enter-box">
   	<div class="panel-heading">
-  		<button class="btn" id="toggle-load"> switch </button>
   		enter weight 
   		<a id="custom-display"> 0 </a> 
   	</div>
@@ -59,13 +51,10 @@
 	</div>
 	<button class="btn" id="custom-backspace"> back </button>
 	<button class="btn" id="set-custom"> set weight </button>
+	<button class="btn" id="toggle-load"> switch </button>
 </div>
 
-<div class="panel panel-default" id="rep-box">
-  	<div class="panel-heading">
-  		sets x reps
-  	</div>
-	
+<div class="panel panel-default" id="rep-box">	
 	<div class="panel-body">
 		<label> sets </label>
 		<div class="btn-group">

@@ -71,22 +71,24 @@ body,html {
 #repup, #repdown {
 	border: 1px solid black;
 	color: white;
-	background-color: steelblue;
+	background-color: darkviolet;
+}
+
+#rep-display {
+	color: darkviolet;
 }
 
 #setup, #setdown {
 	border: 1px solid black;
 	color: white;
-	background-color: teal;
+	background-color: deeppink;
 }
+
 
 #set-display {
-	color: teal;
+	color: deeppink;
 }
 
-#rep-display {
-	color: steelblue;
-}
 
 #add-movement-submit {
 	background-color: white;
