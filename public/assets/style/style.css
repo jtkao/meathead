@@ -29,10 +29,12 @@ body,html {
 
 .b55 {
 	background-color: red;
+	color: white;
 }
 
 .b45 {
 	background-color: blue;
+	color: white;
 }
 
 .b35 {
@@ -41,10 +43,12 @@ body,html {
 
 .b25 {
 	background-color: green;
+	color: white;
 }
 
 .b10 {
 	background-color: gray;
+	color: white;
 }
 
 .b5 {

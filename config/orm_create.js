@@ -15,7 +15,7 @@ var orm_create = {
 	},
 	// add_condition
 	new_condition: function(condition_name, callback) {
-		query_string = "INSERT INTO `conditions` (`condition_name`) VALUES ('" + condition_name + "');"
+		query_string = 'INSERT INTO `conditions` (`condition_name`) VALUES ("' + condition_name + '");'
 		// console.log(query_string)
 
 		connection.query(query_string, (error, result) => {
@@ -25,7 +25,7 @@ var orm_create = {
 	},
 	// add_movement
 	new_movement: function(movement_name, callback) {
-		query_string = "INSERT INTO `movements` (`movement_name`) VALUES ('" + movement_name + "');"
+		query_string = 'INSERT INTO `movements` (`movement_name`) VALUES ("' + movement_name + '");'
 		//console.log(query_string)
 
 		connection.query(query_string, (error, result) => {

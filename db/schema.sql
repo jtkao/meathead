@@ -17,7 +17,7 @@ CREATE TABLE `sets` (
 	`set_id` INT AUTO_INCREMENT PRIMARY KEY,
 	`set_date` DATE NOT NULL,
     `movement_id` INT,
-	`weight` INT NOT NULL,
+	`weight` DECIMAL (6,2) NOT NULL,
     `no_sets` INT NOT NULL,
     `no_reps` INT NOT NULL,
     `rpe` INT,
