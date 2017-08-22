@@ -2,11 +2,11 @@ var sets = require("../models/model_read.js")
 
 module.exports = function(app) {
 
-	app.post("/find_all_sets", (req, res)=>{
-		sets.find_all((result)=>{
-			res.send(result);
-		});
-	});
+	//app.post("/find_all_sets", (req, res)=>{
+	//	sets.find_all((result)=>{
+	//		res.send(result);
+	//	});
+	//});
 
 	app.post("/find_set_on_date", (req, res)=>{
 		var set_date = "2017-08-17";
@@ -25,19 +25,19 @@ module.exports = function(app) {
 		});
 	});
 
-	app.post("/find_sets_for_week", (req, res)=>{
-		sets.find_for_week((result)=>{
-			res.send(result);
-		});
-	});
+	//app.post("/find_sets_for_week", (req, res)=>{
+	//	sets.find_for_week((result)=>{
+	//		res.send(result);
+	//	});
+	//});
 
-	app.post("/find_sets_for_month", (req, res)=>{
-		var month = "MONTH(CURDATE())"
-
-		sets.find_for_month(month, (result)=>{
-			res.send(result);
-		});
-	});
+	//app.post("/find_sets_for_month", (req, res)=>{
+	//	var month = "MONTH(CURDATE())"
+	//
+	//	sets.find_for_month(month, (result)=>{
+	//		res.send(result);
+	//	});
+	//});
 
 	app.post("/find_1rm", (req,res)=>{
 		var movement_id = 1;

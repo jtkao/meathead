@@ -34,14 +34,14 @@ var orm_read = {
 	},
 	// for_week
 	select_for_week: function(callback) {
-		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements` WHERE `set_date` BETWEEN CURDATE()-7 AND CURDATE();"
+		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements` WHERE `set_date` BETWEEN CURDATE()-7 AND CURDATE() ORDER BY (`set_date`);"
 		console.log(query_string);
 
 		execute(query_string, callback);
 	},
 	// 
 	select_for_month:function(month, callback) {
-		var query_string = "SELECT * FROM `sets` WHERE MONTH(`set_date`) =" + month + ";";
+		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements` WHERE MONTH(`set_date`) =" + month + " ORDER BY (`set_date`);";
 		console.log(query_string);
 
 		execute(query_string, callback);
