@@ -9,11 +9,11 @@ var sets = 1;
 var barbell_emulator = "=========[45]==========";
 
 function reset() {
-	var barbell_accounted = [false, 0];
-	var barbell_emulator = "=========[45]=========="
-	var total = 45;
-	var reps = 0;
-	var sets = 1;
+	barbell_accounted = [false, 0];
+	barbell_emulator = "=========[45]=========="
+	total = 45;
+	reps = 0;
+	sets = 1;
 
 	$("#bb-display").html(total);
 	$("#bb-accounted").html("not accounted for!");
@@ -67,12 +67,16 @@ $(document).ready(()=>{
 	$("#toggle-enter").on("click", ()=>{
 		$("#load-box").hide();
 		$("#enter-box").show();
+		$("#bb45").hide();
+		$("#bb55").hide();
 		reset();
 	});
 
 	$("#toggle-load").on("click", ()=>{
 		$("#enter-box").hide();
 		$("#load-box").show();
+		$("#bb45").show();
+		$("#bb55").show();
 		reset();
 	});
 
@@ -117,7 +121,11 @@ $(document).ready(()=>{
 	});
 
 	$("#set-custom").on("click", ()=>{
-		total = parseInt(custom);
+		if (custom.length === 0) {
+			total = 0;
+		} else {
+			total = parseInt(custom);
+		}
 		custom = "";
 		$("#custom-display").html("0");
 		$("#bb-display").html(total);
@@ -193,9 +201,12 @@ $(document).ready(()=>{
 
 		$("#bb-box").show();
 		$("#load-box").show();
+		$("#enter-box").hide();
 		$("#rep-box").show();
 		$("#begin-log").show();
 		$("#log-box").hide();
+		$("#bb45").show();
+		$("#bb55").show();
 	});
 
 	$("#new-movement-form").on("submit", ()=>{

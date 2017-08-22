@@ -25,6 +25,20 @@ module.exports = function(app) {
 		});
 	});
 
+	app.post("/find_sets_for_week", (req, res)=>{
+		sets.find_for_week((result)=>{
+			res.send(result);
+		});
+	});
+
+	app.post("/find_sets_for_month", (req, res)=>{
+		var month = "MONTH(CURDATE())"
+
+		sets.find_for_month(month, (result)=>{
+			res.send(result);
+		});
+	});
+
 	app.post("/find_1rm", (req,res)=>{
 		var movement_id = 1;
 
@@ -36,7 +50,7 @@ module.exports = function(app) {
 	app.post("/find_set_notes", (req,res)=>{
 		var set_id = 1;
 
-		sets.find_notes(set_id, (result)=>{
+		sets.find_set_notes(set_id, (result)=>{
 			res.send(result);
 		});
 	});
@@ -44,7 +58,7 @@ module.exports = function(app) {
 	app.post("/find_set_conditions", (req,res)=>{
 		var set_id = 5;
 
-		sets.find_conditions(set_id, (result)=>{
+		sets.find_set_conditions(set_id, (result)=>{
 			res.send(result);
 		});
 	});

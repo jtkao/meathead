@@ -23,6 +23,19 @@ var model_read = {
 			return result;
 		});
 	},
+	// return all sets between the last seven days up to current date
+	find_for_week: function(callback) {
+		orm_read.select_for_week((result)=>{
+			callback(result);
+			return result;
+		})
+	},
+	find_for_month: function(month, callback) {
+		orm_read.select_for_month(month, (result)=>{
+			callback(result);
+			return result;
+		})
+	},
 	// return 1 rep max
 	find_1rm: function(movement_id, callback) {
 		orm_read.select_pr(movement_id, 1, (result)=>{

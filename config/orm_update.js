@@ -1,5 +1,12 @@
 var connection = require('./connection.js');
 
+function execute(callback) {
+	connection.query(query_string, (error, result) => {
+		if (error) {throw error};
+		callback(result);
+	});
+};
+
 var orm_update = {
 	// UPDATE SET DATA
 	//
@@ -8,10 +15,7 @@ var orm_update = {
 			+ " WHERE `set_id`=" + set_id + ";";
 		console.log(query_string);
 
-		connection.query(query_string, (error, result) => {
-			if (error) {throw error};
-			callback(result);
-		});
+		execute(callback);
 	},
 	//
 	edit_set_weight: function(set_id, updated_weight, callback) {
@@ -19,10 +23,7 @@ var orm_update = {
 			+ " WHERE `set_id`=" + set_id + ";";
 		console.log(query_string);
 
-		connection.query(query_string, (error, result) => {
-			if (error) {throw error};
-			callback(result);
-		});
+		execute(callback);
 	},
 	//
 	edit_set_sets: function(set_id, updated_no_sets, callback) {
@@ -30,10 +31,7 @@ var orm_update = {
 			+ " WHERE `set_id`=" + set_id + ";";
 		console.log(query_string);
 
-		connection.query(query_string, (error, result) => {
-			if (error) {throw error};
-			callback(result);
-		});
+		execute(callback);
 	},
 	//
 	edit_set_reps: function(set_id, updated_no_reps, callback) {
@@ -41,10 +39,7 @@ var orm_update = {
 			+ " WHERE `set_id`=" + set_id + ";";
 		console.log(query_string);
 
-		connection.query(query_string, (error, result) => {
-			if (error) {throw error};
-			callback(result);
-		});
+		execute(callback);
 	},
 	//
 	edit_set_rpe: function(set_id, updated_rpe, callback) {
@@ -52,10 +47,7 @@ var orm_update = {
 			+ " WHERE `set_id`=" + set_id + ";";
 		console.log(query_string);
 
-		connection.query(query_string, (error, result) => {
-			if (error) {throw error};
-			callback(result);
-		});
+		execute(callback);
 	},
 	//
 	edit_set_notes: function(set_id, updated_content, callback) {
@@ -63,10 +55,7 @@ var orm_update = {
 			+ '" WHERE `set_id`=' + set_id + ';';
 		console.log(query_string);
 
-		connection.query(query_string, (error, result) => {
-			if (error) {throw error};
-			callback(result);
-		});
+		execute(callback);
 	},
 	// UPDATE MOVEMENTS AND CONDITIONS
 	//
@@ -75,11 +64,7 @@ var orm_update = {
 			+ '" WHERE `movement_id`=' + movement_id + ';';
 		console.log(query_string);
 
-		connection.query(query_string, (error, result) => {
-			if (error) {throw error};
-			callback(result);
-		});
-
+		execute(callback);
 	},
 	//
 	edit_condition_name: function(condition_id, updated_name, callback) {
@@ -87,11 +72,7 @@ var orm_update = {
 			+ '" WHERE `condition_id`=' + condition_id + ';';
 		console.log(query_string);
 
-		connection.query(query_string, (error, result) => {
-			if (error) {throw error};
-			callback(result);
-		});
-
+		execute(callback);
 	}
 // end orm_update
 };
