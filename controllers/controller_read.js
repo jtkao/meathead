@@ -46,22 +46,6 @@ module.exports = function(app) {
 			res.send(result);
 		});
 	});
-
-	app.post("/find_set_notes", (req,res)=>{
-		var set_id = 1;
-
-		sets.find_set_notes(set_id, (result)=>{
-			res.send(result);
-		});
-	});
-
-	app.post("/find_set_conditions", (req,res)=>{
-		var set_id = 5;
-
-		sets.find_set_conditions(set_id, (result)=>{
-			res.send(result);
-		});
-	});
 	
 // end controller read 
 };

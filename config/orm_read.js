@@ -11,7 +11,7 @@ var orm_read = {
 	// READ
 	// all
 	select_all: function(callback) {
-		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements`";
+		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements` ORDER BY (`set_date`);";
 		console.log(query_string)
 
 		execute(query_string, callback);
