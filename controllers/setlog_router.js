@@ -6,9 +6,7 @@ module.exports = function(app) {
 		var month = "MONTH(CURDATE())"
 
 		read_sets.find_for_month(month, (result)=>{
-			var raw_data = result;
-
-			raw_data.forEach((set)=>{
+			result.forEach((set)=>{
 				var date_to_string = String(set.set_date).substring(4,15);
 				set.set_date = date_to_string;
 			});
@@ -17,50 +15,51 @@ module.exports = function(app) {
 		});
 	});
 
-	app.get("/setlog_all", (req,res)=>{
+	app.get("/find_all_sets", (req,res)=>{
 
 		read_sets.find_all((result)=>{
-			var raw_data = result;
-
-			raw_data.forEach((set)=>{
+			result.forEach((set)=>{
 				var date_to_string = String(set.set_date).substring(4,15);
 				set.set_date = date_to_string;
 			});
 
-			res.render("setlog", {"logged":result})
+			res.send(result);
+			res.end();
 		});
 	});
 
-	app.get("/setlog_week", (req,res)=>{
+	app.get("/find_sets_for_week", (req,res)=>{
 
 		read_sets.find_for_week((result)=>{
-			var raw_data = result;
-
-			raw_data.forEach((set)=>{
+			result.forEach((set)=>{
 				var date_to_string = String(set.set_date).substring(4,15);
 				set.set_date = date_to_string;
 			});
 
-			res.render("setlog", {"logged":result})
+			res.send(result);
+			res.end();
 		});
 	});
 
-	app.post("/setlog_month", (req, res)=>{
-		var month = req.body.month
+	app.post("/find_sets_for_month", (req, res)=>{
+		var month = req.body.month;
+		console.log("request for month", month);
 	
 		read_sets.find_for_month(month, (result)=>{
 			console.log("server response", result)
-			var raw_data = result;
 
-			raw_data.forEach((set)=>{
+			result.forEach((set)=>{
 				var date_to_string = String(set.set_date).substring(4,15);
 				set.set_date = date_to_string;
-			});
+			})
 
-			res.render("setlog", {"logged":result});
+			res.send(result);
+			res.end();
 		});
 	});
 
+
+	// FIND NOTES AND CONDITIONS
 	app.post("/find_set_notes", (req,res)=>{
 		var set_id = req.body.set_id;
 

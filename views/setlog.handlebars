@@ -4,11 +4,11 @@
 	<div class="panel panel-default" id="data-control">
 		<div class="panel-heading">
 			data control 
-			<button id="data-controls"> show </button>
+			<button id="data-controls"> hide </button>
 		</div>
 	<div class="panel-body" id="control-box">
-			<a class="btn btn-default" id="get-week" href="/setlog_week"> week </a>
-			<a class="btn btn-default" id="get-all" href="/setlog_all"> all </a>
+			<a class="btn btn-default" id="get-week"> week </a>
+			<a class="btn btn-default" id="get-all"> all </a>
 			<br>
 			<select id="month-selection">
 				<option value=1> January </option>
@@ -24,7 +24,7 @@
 				<option value=11> November </option>
 				<option value=12> December </option>
 			</select>
-			<button id="get-month"> month </button>
+			<button class="btn" id="get-month"> month </button>
 		</div>
 	</div>
 </div>
@@ -43,7 +43,7 @@
 			</tr>
 		</thead>
 
-		<tbody>
+		<tbody id="data-results-body">
 			{{#each logged}}
 			<tr id={{set_id}}>
 				<td> {{movement_name}} </td>
