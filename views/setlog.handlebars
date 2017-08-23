@@ -6,28 +6,43 @@
 			data control 
 			<button id="data-controls"> hide </button>
 		</div>
-	<div class="panel-body" id="control-box">
-			<a class="btn btn-default" id="get-week"> week </a>
-			<a class="btn btn-default" id="get-all"> all </a>
+		<div class="panel-body" id="control-box">
+			<button class="btn btn-default" id="get-week"> week </button>
 			<br>
-			<select id="month-selection">
-				<option value=1> January </option>
-				<option value=2> Februrary </option>
-				<option value=3> March </option>
-				<option value=4> April </option>
-				<option value=5> May </option>
-				<option value=6> June </option>
-				<option value=7> July </option>
-				<option value=8> August </option>
-				<option value=9> September </option>
-				<option value=10> October </option>
-				<option value=11> November </option>
-				<option value=12> December </option>
-			</select>
-			<button class="btn" id="get-month"> month </button>
+			<button class="btn btn-default" id="get-all"> all </button>
+
+			<form class="form-inline" id="get-date">
+				<div class="form-group">					
+					<input class="form-control" type="date" id="date-input">  
+				</div>
+				<button class="btn btn-default" type="submit">date</button>
+				<button class="btn btn-default" id="get-today">today</button>
+			</form>
+
+			<form class="form-inline" id="get-month">
+				<div class="form-group">
+					<select class="form-control" id="month-selection">
+						<option value=1> January </option>
+						<option value=2> Februrary </option>
+						<option value=3> March </option>
+						<option value=4> April </option>
+						<option value=5> May </option>
+						<option value=6> June </option>
+						<option value=7> July </option>
+						<option value=8> August </option>
+						<option value=9> September </option>
+						<option value=10> October </option>
+						<option value=11> November </option>
+						<option value=12> December </option>
+					</select>
+				</div>
+				<button class="btn btn-default" type="submit">month</button>
+			</form>
+
 		</div>
 	</div>
 </div>
+
 
 <div class="container-fluid" id="data-results">
 	<table class="table">

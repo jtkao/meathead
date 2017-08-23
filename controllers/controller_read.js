@@ -8,13 +8,13 @@ module.exports = function(app) {
 	//	});
 	//});
 
-	app.post("/find_set_on_date", (req, res)=>{
-		var set_date = "2017-08-17";
-
-		sets.find_on_date(set_date, (result)=>{
-			res.send(result);
-		})
-	});
+	//app.post("/find_set_on_date", (req, res)=>{
+	//	var set_date = "2017-08-17";
+	//
+	//	sets.find_on_date(set_date, (result)=>{
+	//		res.send(result);
+	//	})
+	//});
 
 	app.post("/find_sets_in_range", (req, res)=>{
 		var start_date = "2017-08-01";

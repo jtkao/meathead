@@ -1,5 +1,15 @@
 var read_sets = require("../models/model_read.js");
 
+function to_view(response, result){
+	result.forEach((set)=>{
+		var date_to_string = String(set.set_date).substring(4,15);
+		set.set_date = date_to_string;
+	});
+
+	response.send(result);
+	response.end();
+}
+
 module.exports = function(app) {
 
 	app.get("/setlog", (req,res)=>{
@@ -46,8 +56,6 @@ module.exports = function(app) {
 		console.log("request for month", month);
 	
 		read_sets.find_for_month(month, (result)=>{
-			console.log("server response", result)
-
 			result.forEach((set)=>{
 				var date_to_string = String(set.set_date).substring(4,15);
 				set.set_date = date_to_string;
@@ -58,6 +66,13 @@ module.exports = function(app) {
 		});
 	});
 
+	app.post("/find_sets_on_date", (req, res)=>{
+		var set_date = req.body.set_date;
+
+		read_sets.find_on_date(set_date, (result)=>{
+			to_view(res, result);
+		})
+	});
 
 	// FIND NOTES AND CONDITIONS
 	app.post("/find_set_notes", (req,res)=>{
