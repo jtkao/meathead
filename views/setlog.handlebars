@@ -1,10 +1,12 @@
-<script src="assets/logic/setlog_logic.js" type="text/javascript"></script>
+<script src="assets/logic/setlog_table.js" type="text/javascript"></script>
+<script src="assets/logic/setlog_modal.js" type="text/javascript"></script>
 
 <div class="container-fluid">
 	<div class="panel panel-default" id="data-control">
 		<div class="panel-heading">
 			data control 
 			<button id="data-controls"> show </button>
+			<!-- Trigger the modal with a button -->
 		</div>
 		<div class="panel-body" id="control-box" id="get-week">
 
@@ -55,6 +57,17 @@
 				<button class="btn btn-default" type="submit">movement</button>
 			</form>
 
+			<form class="form-inline" id="get-1rm">
+				<div class="form-group">
+					<select class="form-control" id="1rm-movement-selection">
+						{{#each mvmt}}
+							<option value={{movement_id}}> {{movement_name}} </option>
+						{{/each}}
+					</select>
+				</div>
+				<button class="btn btn-default" type="submit">1rm</button>
+			</form>
+
 		</div>
 	</div>
 </div>
@@ -69,23 +82,45 @@
 				<th> SETS </th>
 				<th> REPS </th>
 				<th> DATE </th>
-				<th> NOTES </th>
-				<th> CONDITIONS </th>
+				<th>  </th>
+				<th>  </th>
 			</tr>
 		</thead>
 
 		<tbody id="data-results-body">
 			{{#each logged}}
-			<tr id={{set_id}}>
+			<tr id={{set_id}} class="table-data">
 				<td> {{movement_name}} </td>
 				<td> {{weight}} </td>
 				<td> {{no_sets}} </td>
 				<td> {{no_reps}} </td>
 				<td> {{set_date}} </td>
-				<td> <button class="get-notes" value={{set_id}}> view </button> </td>
-				<td> <button class="get-conditions" value={{set_id}}> view </button> </td>
+				<td> <button class="btn get-notes" value={{set_id}}> notes </button> </td>
+				<td> <button class="btn get-conditions" value={{set_id}}> conditions </button> </td>
 			</tr>
 			{{/each}}
 		</tbody>
 	</table>
+</div>
+
+
+<!-- Modal -->
+<div id="setlog-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="setlog-modal-head">NO DATA</h4>
+      </div>
+      <div class="modal-body" id="setlog-modal-body">
+        NO DATA
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>

@@ -1,7 +1,12 @@
+var read_sets = require("../models/model_read.js");
+
 module.exports = function(app) {
 
 	app.get("/", (req,res) =>{
-		res.render("home");
+		
+		read_sets.find_movements((movements)=>{
+			res.render("home", {"movement":movements})
+		});
 	})
 
 	app.post("/log", (req, res)=>{

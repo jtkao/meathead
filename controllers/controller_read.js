@@ -39,13 +39,13 @@ module.exports = function(app) {
 	//	});
 	//});
 
-	app.post("/find_1rm", (req,res)=>{
-		var movement_id = 1;
-
-		sets.find_1rm(movement_id, (result)=>{
-			res.send(result);
-		});
-	});
+	//app.post("/find_1rm", (req,res)=>{
+	//	var movement_id = 1;
+	//
+	//	sets.find_1rm(movement_id, (result)=>{
+	//		res.send(result);
+	//	});
+	//});
 	
 // end controller read 
 };

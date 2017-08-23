@@ -65,6 +65,16 @@ module.exports = function(app) {
 		})
 	});
 
+
+
+	app.post("/find_1rm", (req,res)=>{
+		var movement_id = req.body.movement_id;
+
+		read_sets.find_1rm(movement_id, (result)=>{
+			res.send(result);
+		});
+	});
+
 	// FIND NOTES AND CONDITIONS
 	app.post("/find_set_notes", (req,res)=>{
 		var set_id = req.body.set_id;
@@ -81,4 +91,6 @@ module.exports = function(app) {
 			to_view(res, result);
 		});
 	});
+
+	//
 }

@@ -70,16 +70,24 @@
 	</div>
 </div>
 
-<div class="panel panel-default" id="log-box">
-  	<div class="panel-heading" id="log-head">
-  		Log 
-  	</div>
+<button class="btn" id="begin-log"> log </button>
 
-	<div class="btn-group panel-body">
+<!-- Modal -->
+<div id="home-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="home-modal-head">NO DATA</h4>
+      </div>
+      <div class="modal-body" id="home-modal-body">
+        <div class="btn-group panel-body">
 		<form class="form-inline">
 			<select class="form-control" id="select-movement">
 				{{#each movement}}
-	                <option value={{id}}> {{name}} </option>
+	                <option value={{movement_id}}> {{movement_name}} </option>
 	            {{/each}}
 	        </select>
 
@@ -99,7 +107,11 @@
 			</div>
 		</form>
 	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
 
+  </div>
 </div>
-
-<button class="btn" id="begin-log"> log </button>

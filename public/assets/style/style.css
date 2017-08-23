@@ -97,3 +97,26 @@ body,html {
 #data-results {
 	background-color: white;
 }
+.modal-dialog {
+        position: absolute;
+        top: 100px;
+        right: 100px;
+        bottom: 0;
+        left: 0;
+        z-index: 10040;
+        overflow: auto;
+        overflow-y: auto;
+}
+
+.get-notes, .get-conditions {
+	background-color: white;
+}
+
+.get-notes:hover, .get-conditions:hover {
+	background-color: cyan;
+	color: white;
+}
+
+.table-data:hover {
+	background-color: palegreen;
+}

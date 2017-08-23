@@ -2,42 +2,22 @@ function populate(data) {
 	$("#data-results-body").html("");
 	// generate table elements loaded with response data
 	data.forEach((set)=>{
-		var raw = "<tr>"
+		var raw = "<tr class='table-data'>"
 		raw += '<td>' + set.movement_name + '</td>'
 		raw += '<td>' + set.weight + '</td>'
 		raw += '<td>' + set.no_sets + '</td>'
 		raw += '<td>' + set.no_reps + '</td>'
 		raw += '<td>' + set.set_date + '</td>'
-		raw += '<td> <button class="get-notes" value=' + set.set_id + '> view </button> </td>'
-		raw += '<td> <button class="get-conditions" value=' + set.set_id + '> view </button> </td>'
+		raw += '<td> <button class="btn get-notes" value=' + set.set_id + '> notes </button> </td>'
+		raw += '<td> <button class="btn get-conditions" value=' + set.set_id + '> conditions </button> </td>'
 		raw += '</tr>'
 		//console.log(raw)
 		$("#data-results-body").append(raw);
 	})
 };
 
-// get set commentary (notes, conditions) 
-function set_commentary(element, message, route, property){
-	var set_id = element.target.value;
-	console.log(message, set_id)
-
-	$.ajax({
-		url: route,
-		method: "POST",
-		datatype: "json",
-		data: {"set_id": set_id}
-	}).done((data)=>{
-		if (data.length > 0) {
-			data.forEach((commentary)=>{
-				console.log(commentary[property])
-			})
-		} else {
-			console.log("no data!")
-		}
-	})
-}
-
 $(document).ready(()=>{
+
 	// toggle control panel 
 	$("#control-box").hide();
 	$("#data-controls").on("click", ()=>{
@@ -118,14 +98,6 @@ $(document).ready(()=>{
 			data: {"movement_id": movement_id},
 			success: (data)=>{populate(data)}
 		});
-	});
-
-	$("#data-results-body").on("click", "button.get-notes",(me)=>{
-		set_commentary(me, "notes for set id#", "/find_set_notes", "content");
-	});
-
-	$("#data-results-body").on("click", "button.get-conditions",(me)=>{
-		set_commentary(me, "conditions for set id#", "/find_set_conditions", "condition_name");
 	});
 	//end 
 });

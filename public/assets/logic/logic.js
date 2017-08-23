@@ -1,3 +1,5 @@
+$("#home-modal").modal();
+
 var total = 45;
 // second element is the weight of the barbell added
 var barbell_accounted = [true, 45];
@@ -169,14 +171,9 @@ $(document).ready(()=>{
 
 	$("#begin-log").on("click", ()=>{
 		event.preventDefault();
-		$("#log-head").html(total + " " + sets + " x " + reps)
+		$("#home-modal-head").html(total + " " + sets + " x " + reps)
 
-		$("#bb-box").hide();
-		$("#load-box").hide();
-		$("#enter-box").hide();
-		$("#rep-box").hide();
-		$("#begin-log").hide();
-		$("#log-box").show();
+		$("#home-modal").modal("show");
 	});
 
 	$("#submit-log").on("click", ()=>{
@@ -198,15 +195,8 @@ $(document).ready(()=>{
 		});
 
 		reset();
-
-		$("#bb-box").show();
-		$("#load-box").show();
 		$("#enter-box").hide();
-		$("#rep-box").show();
-		$("#begin-log").show();
-		$("#log-box").hide();
-		$("#bb45").show();
-		$("#bb55").show();
+		$("#home-modal").modal("hide");
 	});
 
 	$("#new-movement-form").on("submit", ()=>{

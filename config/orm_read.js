@@ -9,54 +9,53 @@ function execute(query_string, callback) {
 };
 
 var orm_read = {
-	// READ
-	// all
+	// return all set data
 	select_all: function(callback) {
 		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements` ORDER BY (`set_date`);";
 		execute(query_string, callback);
 	},
-		// for_week
+	// return set data in range (today - 7), today
 	select_for_week: function(callback) {
 		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements` WHERE `set_date` BETWEEN CURDATE()-7 AND CURDATE() ORDER BY (`set_date`);";
 		execute(query_string, callback);
 	},
-	// on_date
+	// return set data on date
 	select_by_date: function(date, callback) {
 		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements` WHERE (`set_date`='"
 			+ date + "');";
 		execute(query_string, callback);
 	},
-	// in_range
+	// return set data in range start_date - end_date
 	select_in_range: function(start_date, end_date, callback) {
 		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements` WHERE `set_date` BETWEEN '" + start_date + "' AND '" + end_date + "';";
 		execute(query_string, callback);
 	},
-	// 
+	// return set data recorded in a given month
 	select_for_month:function(month, callback) {
 		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements` WHERE MONTH(`set_date`) =" + month + " ORDER BY (`set_date`);";
 		execute(query_string, callback);
 	},
-	// find_pr, find_1rm
+	// return the heaviest weight lifted in a given rep range 
 	select_pr: function(movement_id, reps, callback) {
-		var query_string = "SELECT MAX(`weight`) FROM `sets` WHERE (`no_reps`=" + reps + ") AND (`movement_id`=" + movement_id + ");";
+		var query_string = "SELECT MAX(`weight`), `movement_name` FROM `sets` NATURAL JOIN `movements` WHERE (`no_reps`=" + reps + ") AND (`movement_id`=" + movement_id + ");";
 		execute(query_string, callback);
 	},
-	// find_notes
+	// return notes for a set
 	select_set_notes: function(set_id, callback) {
 		var query_string = "SELECT * FROM `set_notes` WHERE (`set_id`=" + set_id + ");";
 		execute(query_string, callback);
 	},
-	// find_conditions
+	// return conditions for a set
 	select_set_conditions: function(set_id, callback) {
 		var query_string = "SELECT * FROM `set_conditions` NATURAL JOIN `conditions` WHERE (`set_id`=" + set_id + ");";
 		execute(query_string, callback);
 	},
-	//
+	// return all movements and their ids (as select options)
 	select_movements: function(callback) {
 		var query_string = "SELECT * FROM `movements`;"
 		execute(query_string, callback);
 	},
-	//
+	// return all set data for a given movement
 	select_by_movement: function(movement_id, callback) {
 		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements` WHERE (`movement_id`=" + movement_id + ");";
 		execute(query_string, callback)
