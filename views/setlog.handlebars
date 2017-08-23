@@ -4,12 +4,17 @@
 	<div class="panel panel-default" id="data-control">
 		<div class="panel-heading">
 			data control 
-			<button id="data-controls"> hide </button>
+			<button id="data-controls"> show </button>
 		</div>
-		<div class="panel-body" id="control-box">
-			<button class="btn btn-default" id="get-week"> week </button>
-			<br>
-			<button class="btn btn-default" id="get-all"> all </button>
+		<div class="panel-body" id="control-box" id="get-week">
+
+			<form class="form-inline" id="get-week">
+				<button class="btn btn-default" type="submit"> week </button>
+			</form>
+
+			<form class="form-inline" id="get-all">
+				<button class="btn btn-default" type="submit"> all </button>
+			</form>
 
 			<form class="form-inline" id="get-date">
 				<div class="form-group">					
@@ -37,6 +42,17 @@
 					</select>
 				</div>
 				<button class="btn btn-default" type="submit">month</button>
+			</form>
+
+			<form class="form-inline" id="get-movement">
+				<div class="form-group">
+					<select class="form-control" id="movement-selection">
+						{{#each mvmt}}
+							<option value={{movement_id}}> {{movement_name}} </option>
+						{{/each}}
+					</select>
+				</div>
+				<button class="btn btn-default" type="submit">movement</button>
 			</form>
 
 		</div>

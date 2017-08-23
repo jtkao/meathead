@@ -16,8 +16,30 @@ function populate(data) {
 	})
 };
 
+// get set commentary (notes, conditions) 
+function set_commentary(element, message, route, property){
+	var set_id = element.target.value;
+	console.log(message, set_id)
+
+	$.ajax({
+		url: route,
+		method: "POST",
+		datatype: "json",
+		data: {"set_id": set_id}
+	}).done((data)=>{
+		if (data.length > 0) {
+			data.forEach((commentary)=>{
+				console.log(commentary[property])
+			})
+		} else {
+			console.log("no data!")
+		}
+	})
+}
+
 $(document).ready(()=>{
 	// toggle control panel 
+	$("#control-box").hide();
 	$("#data-controls").on("click", ()=>{
 		var control_box = $("#control-box");
 		if (control_box.is(":visible")) {
@@ -29,21 +51,9 @@ $(document).ready(()=>{
 		};
 	});
 
-	$("#get-month").on("submit", (event)=>{
-		console.log("get month start")
+	$("#get-week").on("submit", (event)=>{
 		event.preventDefault();
-		var month = $("#month-selection").val();
-
-		$.ajax({
-			url: "/find_sets_for_month",
-			method: "POST",
-			data: {"month": month},
-			success: (data)=>{populate(data)}
-		});
-	});
-
-
-	$("#get-week").on("click", ()=>{
+		console.log("GET week")
 		$.ajax({
 			url: "/find_sets_for_week",
 			method: "GET",
@@ -51,10 +61,25 @@ $(document).ready(()=>{
 		});
 	});
 
-	$("#get-all").on("click", ()=>{
+	$("#get-all").on("submit", (event)=>{
+		event.preventDefault();
+		console.log("GET ALL")
 		$.ajax({
 			url: "/find_all_sets",
 			method: "GET",
+			success: (data)=>{populate(data)}
+		});
+	});
+
+
+	$("#get-month").on("submit", (event)=>{
+		event.preventDefault();
+		var month = $("#month-selection").val();
+
+		$.ajax({
+			url: "/find_sets_for_month",
+			method: "POST",
+			data: {"month": month},
 			success: (data)=>{populate(data)}
 		});
 	});
@@ -83,44 +108,24 @@ $(document).ready(()=>{
 		});
 	});
 
-	$("#data-results-body").on("click", "button.get-notes",(me)=>{
-		//console.log(me)
-		var set_id = me.target.value;
-		console.log("notes for set id#", set_id)
+	$("#get-movement").on("submit", (event)=>{
+		event.preventDefault();
+		var movement_id = $("#movement-selection").val();
 
 		$.ajax({
-			url: "/find_set_notes",
+			url: "/find_sets_for_movement",
 			method: "POST",
-			datatype: "json",
-			data: {"set_id": set_id}
-		}).done((data)=>{
-			if (data.length > 0) {
-				console.log(data[0].content)
-			} else {
-				console.log("no notes!")
-			}
-		})
+			data: {"movement_id": movement_id},
+			success: (data)=>{populate(data)}
+		});
+	});
+
+	$("#data-results-body").on("click", "button.get-notes",(me)=>{
+		set_commentary(me, "notes for set id#", "/find_set_notes", "content");
 	});
 
 	$("#data-results-body").on("click", "button.get-conditions",(me)=>{
-		//console.log(me)
-		var set_id = me.target.value;
-		console.log("conditions for set id#", set_id)
-
-		$.ajax({
-			url: "/find_set_conditions",
-			method: "POST",
-			datatype: "json",
-			data: {"set_id": set_id}
-		}).done((data)=>{
-			if (data.length > 0) {
-				data.forEach((condition)=>{
-					console.log(condition.condition_name)
-				})
-			} else {
-				console.log("no conditions!")
-			}
-		})
+		set_commentary(me, "conditions for set id#", "/find_set_conditions", "condition_name");
 	});
 	//end 
 });

@@ -9,6 +9,13 @@ var model_read = {
 			return result;
 		});
 	},
+	// return all sets between the last seven days up to current date
+	find_for_week: function(callback) {
+		orm_read.select_for_week((result)=>{
+			callback(result);
+			return result;
+		})
+	},
 	// return all sets on date
 	find_on_date: function(date, callback) {
 		orm_read.select_by_date(date, (result)=>{
@@ -23,13 +30,7 @@ var model_read = {
 			return result;
 		});
 	},
-	// return all sets between the last seven days up to current date
-	find_for_week: function(callback) {
-		orm_read.select_for_week((result)=>{
-			callback(result);
-			return result;
-		})
-	},
+	//
 	find_for_month: function(month, callback) {
 		orm_read.select_for_month(month, (result)=>{
 			callback(result);
@@ -56,6 +57,20 @@ var model_read = {
 			callback(result);
 			return result;
 		});
+	},
+	// 
+	find_movements: function(callback) {
+		orm_read.select_movements((result)=>{
+			callback(result);
+			return result;
+		})
+	},
+	//
+	find_for_movement: function(movement_id, callback) {
+		orm_read.select_by_movement(movement_id, (result)=>{
+			callback(result);
+			return result;
+		})
 	}
 };
 

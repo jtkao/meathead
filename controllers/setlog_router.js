@@ -7,7 +7,6 @@ function to_view(response, result){
 	});
 
 	response.send(result);
-	response.end();
 }
 
 module.exports = function(app) {
@@ -16,53 +15,45 @@ module.exports = function(app) {
 		var month = "MONTH(CURDATE())"
 
 		read_sets.find_for_month(month, (result)=>{
-			result.forEach((set)=>{
+			var test = result;
+
+			test.forEach((set)=>{
 				var date_to_string = String(set.set_date).substring(4,15);
 				set.set_date = date_to_string;
 			});
 
-			res.render("setlog", {"logged":result})
+			read_sets.find_movements((movements)=>{
+				console.log(movements)
+				res.render("setlog", {"logged":test, "mvmt":movements})
+			});
 		});
 	});
 
 	app.get("/find_all_sets", (req,res)=>{
-
 		read_sets.find_all((result)=>{
-			result.forEach((set)=>{
-				var date_to_string = String(set.set_date).substring(4,15);
-				set.set_date = date_to_string;
-			});
-
-			res.send(result);
-			res.end();
+			to_view(res, result)
 		});
 	});
 
 	app.get("/find_sets_for_week", (req,res)=>{
-
 		read_sets.find_for_week((result)=>{
-			result.forEach((set)=>{
-				var date_to_string = String(set.set_date).substring(4,15);
-				set.set_date = date_to_string;
-			});
-
-			res.send(result);
-			res.end();
+			to_view(res, result)
 		});
 	});
 
 	app.post("/find_sets_for_month", (req, res)=>{
 		var month = req.body.month;
-		console.log("request for month", month);
 	
 		read_sets.find_for_month(month, (result)=>{
-			result.forEach((set)=>{
-				var date_to_string = String(set.set_date).substring(4,15);
-				set.set_date = date_to_string;
-			})
+			to_view(res, result);
+		});
+	});
 
-			res.send(result);
-			res.end();
+	app.post("/find_sets_for_movement", (req, res)=>{
+		var movement_id = req.body.movement_id;
+	
+		read_sets.find_for_movement(movement_id, (result)=>{
+			to_view(res, result);
 		});
 	});
 
@@ -79,9 +70,7 @@ module.exports = function(app) {
 		var set_id = req.body.set_id;
 
 		read_sets.find_set_notes(set_id, (result)=>{
-			console.log(result);
-			res.send(result);
-			res.end();
+			to_view(res, result);;
 		});
 	});
 
@@ -89,9 +78,7 @@ module.exports = function(app) {
 		var set_id = req.body.set_id;
 
 		read_sets.find_set_conditions(set_id, (result)=>{
-			console.log(result);
-			res.send(result);
-			res.end();
+			to_view(res, result);
 		});
 	});
 }
