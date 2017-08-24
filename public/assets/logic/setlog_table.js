@@ -6,6 +6,7 @@ function populate(data) {
 		raw += '<td>' + set.movement_name + '</td>'
 		raw += '<td>' + set.weight + '</td>'
 		raw += '<td>' + set.no_sets + '</td>'
+		raw += '<td> x </td>'
 		raw += '<td>' + set.no_reps + '</td>'
 		raw += '<td>' + set.set_date + '</td>'
 		raw += '<td> <button class="btn get-notes" value=' + set.set_id + '> notes </button> </td>'

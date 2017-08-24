@@ -79,37 +79,41 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" id="closeme">x</button>
         <h4 class="modal-title" id="home-modal-head">NO DATA</h4>
       </div>
       <div class="modal-body" id="home-modal-body">
         <div class="btn-group panel-body">
-		<form class="form-inline">
-			<select class="form-control" id="select-movement">
-				{{#each movement}}
-	                <option value={{movement_id}}> {{movement_name}} </option>
-	            {{/each}}
-	        </select>
+			<form class="form-inline">
+				<div class="form-group">
+					<select class="form-control" id="select-movement">
+						{{#each movement}}
+			                <option value={{movement_id}}> {{movement_name}} </option>
+			            {{/each}}
+			        </select>
+		        </div>
 
-	        <button class="btn" type="submit" id="submit-log"> submit </button>
-        </form>
+		        <div class="form-group">
+		        	<select class="form-control" id="select-rpe">
+		        		<option value=0 selected="selected"> no rpe </option>
+		        		<option value=5> 5 </option>
+		        		<option value=5.5> 5.5 </option>
+		        		<option value=6> 6 </option>
+		        		<option value=6.5> 6.5 </option>
+		        		<option value=7> 7 </option>
+		        		<option value=7.5> 7.5 </option>
+		        		<option value=8> 8 </option>
+		        		<option value=8.5> 8.5 </option>
+		        		<option value=9> 9 </option>
+		        		<option value=9.5> 9.5 </option>
+		        	</select>
+		        </div>
 
-        <br>
 
-		<form class="form-inline" id="new-movement-form">
-
-			<div class="form-group">
-				<input type="text" class="form-control" id="new-movement-input" placeholder="name">
-			</div>
-
-			<div class="form-group">
-				<button class="btn" type="submit" id="add-movement-submit"> add movement </button>
-			</div>
-		</form>
-	</div>
-      </div>
+		        <button class="btn" type="submit" id="submit-log"> submit </button>
+	        </form>
+		</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
 

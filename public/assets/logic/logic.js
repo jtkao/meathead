@@ -181,16 +181,27 @@ $(document).ready(()=>{
 
 		var movement = $("#select-movement").val();
 
+		var rpe = $("#select-rpe").val();
+
+		if (rpe === 0) {
+			rpe = null;
+		}
+
 		console.log(movement + ": " + total + " " + sets + " x " + reps)
 
 		$.ajax({
 			url: "/log",
 			method: 'POST',
 			data: {
-				"sets": sets,
-				"reps": reps,
+				"no_sets": sets,
+				"no_reps": reps,
 				"weight": total,
-				"movementid": movement
+				"movement_id": movement,
+				"rpe": function(){
+					if (rpe > 0) {
+						return rpe
+					}
+				}
 			}
 		});
 

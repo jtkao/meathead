@@ -12,6 +12,9 @@ var orm_create = {
 	// CREATE
 	// add_record
 	new_set: function(movement_id, weight, no_sets, no_reps, rpe, callback) {
+		if (rpe.length === 0) {
+			rpe = null
+		}
 		query_string = "INSERT INTO `sets` (`set_date`,`movement_id`,`weight`,`no_sets`,`no_reps`, `rpe`) VALUES "
 			+ "(CURDATE(), " + movement_id + ", " + weight + ", " + no_sets + ", " + no_reps + ", " + rpe + ");"
 		execute(query_string, callback);

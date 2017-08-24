@@ -20,7 +20,7 @@ CREATE TABLE `sets` (
 	`weight` DECIMAL (6,2) NOT NULL,
     `no_sets` INT NOT NULL,
     `no_reps` INT NOT NULL,
-    `rpe` INT,
+    `rpe` DECIMAL(3,1),
     FOREIGN KEY (`movement_id`) REFERENCES `movements`(`movement_id`),
     INDEX (`set_date`)
 );

@@ -120,3 +120,7 @@ body,html {
 .table-data:hover {
 	background-color: palegreen;
 }
+
+#closeme {
+	color: red;
+}
