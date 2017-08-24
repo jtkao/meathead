@@ -113,12 +113,13 @@ body,html {
 }
 
 .get-notes:hover, .get-conditions:hover {
-	background-color: cyan;
+	background-color: palegreen;
 	color: white;
 }
 
 .table-data:hover {
-	background-color: palegreen;
+	font-weight: bold;
+	background-color: lavender;
 }
 
 #closeme {
