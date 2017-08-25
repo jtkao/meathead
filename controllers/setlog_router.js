@@ -1,4 +1,5 @@
 var read_sets = require("../models/model_read.js");
+var create_sets = require("../models/model_create.js");
 
 function to_view(response, result){
 	result.forEach((set)=>{
@@ -23,8 +24,12 @@ module.exports = function(app) {
 			});
 
 			read_sets.find_movements((movements)=>{
-				console.log(movements)
-				res.render("setlog", {"logged":test, "mvmt":movements})
+				var set_data = test;
+				var mvmt_data = movements;
+				//res.render("setlog", {"logged":test, "mvmt":movements})
+				read_sets.find_conditions((conditions)=>{
+					res.render("setlog", {"logged":test, "mvmt":movements, "conditions":conditions})
+				})
 			});
 		});
 	});
@@ -65,8 +70,6 @@ module.exports = function(app) {
 		})
 	});
 
-
-
 	app.post("/find_1rm", (req,res)=>{
 		var movement_id = req.body.movement_id;
 
@@ -77,20 +80,40 @@ module.exports = function(app) {
 
 	// FIND NOTES AND CONDITIONS
 	app.post("/find_set_notes", (req,res)=>{
-		var set_id = req.body.set_id;
+		var id = req.body.set_id;
 
-		read_sets.find_set_notes(set_id, (result)=>{
-			to_view(res, result);;
+		read_sets.find_set_notes(id, (result)=>{
+			var set_id = [{"set_id": id}];
+			var response = set_id.concat(result);
+			to_view(res, response);
 		});
 	});
 
 	app.post("/find_set_conditions", (req,res)=>{
-		var set_id = req.body.set_id;
+		var id = req.body.set_id;
 
-		read_sets.find_set_conditions(set_id, (result)=>{
-			to_view(res, result);
+		read_sets.find_set_conditions(id, (result)=>{
+			var set_id = [{"set_id": id}];
+			var response = set_id.concat(result);
+			to_view(res, response);
 		});
 	});
-
 	//
+
+	app.post("/add_set_condition", (req, res)=>{
+		console.log(req.body)
+		var set_id = req.body.set_id;
+		var condition_id = req.body.condition_id;
+
+		create_sets.add_set_condition(set_id, condition_id, (result)=>{
+			res.send(result);
+		})
+	});
+
+	app.post("/add_set_note", (req, res)=>{
+		console.log(req.body);
+		res.end();
+	})
+
+
 }

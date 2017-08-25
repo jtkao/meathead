@@ -11,18 +11,36 @@ function set_commentary(element, message, route, property){
 		datatype: "json",
 		data: {"set_id": set_id}
 	}).done((data)=>{
-		console.log(data)
-		$("#setlog-modal-head").html(message);
+		// console.log(data)
 
-		if (data.length > 0) {
-			data.forEach((commentary)=>{
-				console.log(commentary[property])
-				$("#setlog-modal-body").html(commentary[property]);
-				$("#setlog-modal").modal("show");
-			})
+		if (property === "content") {
+			$("#submit-condition-id").val(data[0].set_id);
 		} else {
+			$("#submit-condition-id-note").val(data[0].set_id);
+		}
+	
+		$("#setlog-modal-head").html(message + " for set id #" + data[0].set_id);
+		$("#setlog-modal-body").html("");
+
+		if (data.length > 1) {
+
+			for (var i = 1; i < data.length; i++) {
+				var element = "<p>" + data[i][property] + "</p>";
+				$("#setlog-modal-body").append(element);
+			}
+
+			$("#setlog-modal").modal("show");
+		} else if (data.length === 1) {
 			$("#setlog-modal-body").html("no data");
 			$("#setlog-modal").modal("show");
+		}
+
+		if (property === "content") {
+			$("#add-set-condition").hide();
+			$("#add-set-note").show();
+		} else {
+			$("#add-set-condition").show();
+			$("#add-set-note").hide();
 		}
 	})
 }
@@ -54,5 +72,44 @@ $(document).ready(()=>{
 	$("#data-results-body").on("click", "button.get-conditions",(me)=>{
 		set_commentary(me, "conditions", "/find_set_conditions", "condition_name");
 	});
+
+	$("#add-set-condition").on("submit", (event)=>{
+		event.preventDefault();
+		var set_id = $("#submit-condition-id").val();
+		var condition_id = $("#condition-selection").val();
+		console.log(condition_id)
+		var request = {
+			"set_id": set_id,
+			"condition_id": condition_id
+		}
+
+		$.ajax({
+			url: "add_set_condition",
+			method: "POST",
+			data: request
+		}).done((response)=>{
+			console.log(response)
+		})
+	});
+
+	$("#add-set-note").on("submit", (event)=>{
+		console.log("hello")
+		event.preventDefault();
+		var set_id = $("#submit-condition-id-note").val();
+		var content = $("#note-content").val();
+
+		var request = {
+			"set_id": set_id,
+			"content": content
+		}
+
+		$.ajax({
+			url: "add_set_note",
+			method: "POST",
+			data: request
+		}).done((response)=>{
+			console.log(response)
+		})
+	})
 	//end 
 });

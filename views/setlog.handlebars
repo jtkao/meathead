@@ -120,7 +120,30 @@
         NO DATA
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        
+        <form class="form-inline" id="add-set-condition">
+			<div class="form-group">
+				<select class="form-control" id="condition-selection">
+					{{#each conditions}}
+						<option value={{condition_id}}> {{condition_name}} </option>
+					{{/each}}
+				</select>
+			</div>
+
+			<button class="btn btn-danger btn-md" id="submit-condition-id" value=0 type="submit">
+				add condition
+			</button>
+		</form>
+
+		<form class="form-inline" id="add-set-note">
+			<div class="form-group">
+				<textarea id="note-content" class="form-control"></textarea>
+			</div>
+
+			<button class="btn btn-primary btn-md" id="submit-condition-id-note" value=0 type="submit">
+				add note
+			</button>
+		</form>
       </div>
     </div>
 

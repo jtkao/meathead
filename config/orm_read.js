@@ -45,6 +45,10 @@ var orm_read = {
 		var query_string = "SELECT * FROM `set_notes` WHERE (`set_id`=" + set_id + ");";
 		execute(query_string, callback);
 	},
+	select_conditions(callback) {
+		var query_string = "SELECT * FROM `conditions`;"
+		execute(query_string, callback);
+	},
 	// return conditions for a set
 	select_set_conditions: function(set_id, callback) {
 		var query_string = "SELECT * FROM `set_conditions` NATURAL JOIN `conditions` WHERE (`set_id`=" + set_id + ");";

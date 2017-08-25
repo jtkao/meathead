@@ -51,6 +51,13 @@ var model_read = {
 			return result;
 		});
 	},
+	// return all conditions
+	find_conditions: function(callback) {
+		orm_read.select_conditions((result)=>{
+			callback(result);
+			return result;
+		});
+	},
 	// return set conditions for single set
 	find_set_conditions: function(set_id, callback) {
 		orm_read.select_set_conditions(set_id, (result)=>{
