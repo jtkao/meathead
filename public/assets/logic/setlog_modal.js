@@ -60,8 +60,7 @@ function note_ajax(route, req) {
 
 $(document).ready(()=>{
 	// return 1 rep maximum for a MOVEMENT
-	$("#get-1rm").on("submit", (event)=>{
-		event.preventDefault();
+	$("#get-1rm").on("submit", (event)=>{ event.preventDefault();
 		var movement_id = $("#1rm-movement-selection").val();
 		$.ajax({
 			url: "/find_1rm",
@@ -88,9 +87,7 @@ $(document).ready(()=>{
 		set_commentary(set_id, "conditions", "/find_set_conditions", "condition_name");
 	});
 	// SUBMIT REQUEST containing user input to ADD CONDITION
-	$("#add-set-condition").on("submit", (event)=>{
-		event.preventDefault();
-		console.log(event)
+	$("#add-set-condition").on("submit", (event)=>{ event.preventDefault();
 		var set_id = $("#submit-condition-id").val();
 		var condition_id = $("#condition-selection").val();
 
@@ -113,8 +110,7 @@ $(document).ready(()=>{
 		})
 	});
 	// SUBMIT REQUEST containing user input to CREATE or UPDATE NOTE 
-	$("#add-set-note").on("submit", (event)=>{
-		event.preventDefault();
+	$("#add-set-note").on("submit", (event)=>{ event.preventDefault();
 		var set_id = $("#submit-condition-id-note").val();
 		var content = $("#note-content").val();
 		var request = {

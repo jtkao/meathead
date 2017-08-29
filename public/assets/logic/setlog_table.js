@@ -20,7 +20,6 @@ function populate(data) {
 };
 
 $(document).ready(()=>{
-
 	// toggle control panel 
 	$("#control-box").hide();
 	$("#data-controls").on("click", ()=>{
@@ -31,9 +30,8 @@ $(document).ready(()=>{
 			control_box.show();
 		};
 	});
-
-	$("#get-week").on("submit", (event)=>{
-		event.preventDefault();
+	// get all sets in range (today, today-7)
+	$("#get-week").on("submit", (event)=>{ event.preventDefault();
 		console.log("GET week")
 		$.ajax({
 			url: "/find_sets_for_week",
@@ -41,9 +39,8 @@ $(document).ready(()=>{
 			success: (data)=>{populate(data)}
 		});
 	});
-
-	$("#get-all").on("submit", (event)=>{
-		event.preventDefault();
+	// get all sets in database
+	$("#get-all").on("submit", (event)=>{ event.preventDefault();
 		console.log("GET ALL")
 		$.ajax({
 			url: "/find_all_sets",
@@ -51,10 +48,8 @@ $(document).ready(()=>{
 			success: (data)=>{populate(data)}
 		});
 	});
-
-
-	$("#get-month").on("submit", (event)=>{
-		event.preventDefault();
+	// get all sets for the selected month
+	$("#get-month").on("submit", (event)=>{ event.preventDefault();
 		var month = $("#month-selection").val();
 
 		$.ajax({
@@ -64,9 +59,8 @@ $(document).ready(()=>{
 			success: (data)=>{populate(data)}
 		});
 	});
-
-	$("#get-date").on("submit", (event)=>{
-		event.preventDefault();
+	// get all sets for a single workout session (date)
+	$("#get-date").on("submit", (event)=>{ event.preventDefault();
 		var set_date = $("#date-input").val()
 		$.ajax({
 			url: "/find_sets_on_date",
@@ -75,9 +69,8 @@ $(document).ready(()=>{
 			success: (data)=>{populate(data)}
 		});
 	});
-
-	$("#get-today").on("click", (event)=>{
-		event.preventDefault();
+	// get all sets from today's workout (date)
+	$("#get-today").on("click", (event)=>{ event.preventDefault();
 		var today = new Date();
 		var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
@@ -88,9 +81,8 @@ $(document).ready(()=>{
 			success: (data)=>{populate(data)}
 		});
 	});
-
-	$("#get-movement").on("submit", (event)=>{
-		event.preventDefault();
+	// get all sets for a selected mvoement
+	$("#get-movement").on("submit", (event)=>{ event.preventDefault();
 		var movement_id = $("#movement-selection").val();
 
 		$.ajax({

@@ -1,18 +1,16 @@
 $("#home-modal").modal();
-
+// total is the sum of the weight currently loaded on the barbell
 var total = 45;
-// second element is the weight of the barbell added
+// second element is the weight of the selected barbell
 var barbell_accounted = [true, 45];
+// string containing user input via the number pad 
 var custom = "";
-
+// minimum reps can be 0 to account for failed reps
 var reps = 0;
 var sets = 1;
 
-var bb_weight = 45;
-
 function reset() {
 	barbell_accounted = [false, 0];
-	bb_weight = 0
 	total = 0;
 	reps = 0;
 	sets = 1;
@@ -31,8 +29,7 @@ function barbell_control (weight, opposite) {
 		barbell_accounted[1] = weight;
 		total += weight;
 
-		bb_weight = weight;
-		var bb_weight_as_element = "|||[|][|][|][|][|][" + bb_weight + "][|][|][|][|][|]|||";
+		var bb_weight_as_element = "|||[|][|][|][|][|][" + weight + "][|][|][|][|][|]|||";
 
 		$("#bb-display").html(total)
 
@@ -47,8 +44,7 @@ function barbell_control (weight, opposite) {
 			total -= opposite;
 		}
 
-		bb_weight = 0;
-		var bb_weight_as_element = "|||[|][|][|][|][|][" + bb_weight + "][|][|][|][|][|]|||";
+		var bb_weight_as_element = "|||[|][|][|][|][|][" + weight + "][|][|][|][|][|]|||";
 
 		$("#bb-display").html(total);
 		$("#bb-weight-element").html(bb_weight_as_element)
@@ -96,15 +92,14 @@ $(document).ready(()=>{
 	// LOADING WEIGHTS
 
 	$(".plate").on("click", (me)=>{
-		var weight = me.currentTarget.value;
-		total += (parseFloat(weight) * 2);
-		console.log(weight)
-		if (parseFloat(weight) === 2.5) {
-			weight = "2p5"
-			console.log('HELLO');
+		var plate_weight = me.currentTarget.value;
+		total += (parseFloat(plate_weight) * 2);
+		console.log(plate_weight)
+		if (parseFloat(plate_weight) === 2.5) {
+			plate_weight = "2p5"
 		}
 
-		var plate = "<span class='pp proxyplate" + (weight + "'>") + "[]" + "</span>";
+		var plate = "<span class='pp proxyplate" + (plate_weight + "'>") + "[]" + "</span>";
 		var unloaded = $("#bb-emulator").html();
 		//console.log(unloaded)
 
