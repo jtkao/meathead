@@ -55,6 +55,10 @@ body,html {
 	background-color: lightgray;
 }
 
+.b2p5 {
+	background-color: aliceblue;
+}
+
 .plate {
 	width: 80px;
 }
@@ -113,15 +117,55 @@ body,html {
 }
 
 .get-notes:hover, .get-conditions:hover {
-	background-color: palegreen;
+	background-color: yellow;
 	color: white;
 }
 
 .table-data:hover {
 	font-weight: bold;
-	background-color: lavender;
+	background-color: palegreen;
 }
 
 #closeme {
 	color: red;
+}
+
+.proxyplate55 {
+	background-color: red;
+	color: red;
+}
+
+.proxyplate45 {
+	background-color: blue;
+	color: blue;
+}
+
+.proxyplate35 {
+	background-color: yellow;
+	color: yellow;
+}
+
+.proxyplate25 {
+	background-color: green;
+	color: green;
+}
+
+.proxyplate10 {
+	background-color: gray;
+	color: gray;
+}
+
+.proxyplate5 {
+	background-color: lightgray;
+	color: lightgray;
+}
+
+.proxyplate2p5 {
+	background-color: aliceblue;
+	color: aliceblue;
+}
+
+.pp {
+	border: 1px solid black;
+	padding: 2px;
 }

@@ -8,20 +8,21 @@ var custom = "";
 var reps = 0;
 var sets = 1;
 
-var barbell_emulator = "=========[45]==========";
+var bb_weight = 45;
 
 function reset() {
 	barbell_accounted = [false, 0];
-	barbell_emulator = "=========[45]=========="
-	total = 45;
+	bb_weight = 0
+	bb_weight_as_element = "[][][][][]" + bb_weight + "[][][][][]"
+	total = 0;
 	reps = 0;
 	sets = 1;
 
 	$("#bb-display").html(total);
-	$("#bb-accounted").html("not accounted for!");
 	$("#rep-display").html(reps);
 	$("#set-display").html(sets);
-	$("#bb-emulator").html(barbell_emulator);
+
+	$("#bb-emulator").html('<span class="badge badge-secondary pb" id="bb-weight-element"> [][][][][][0][][][][][] </span>')
 };
 
 function barbell_control (weight, opposite) {
@@ -30,14 +31,13 @@ function barbell_control (weight, opposite) {
 		barbell_accounted[0] = true;
 		barbell_accounted[1] = weight;
 		total += weight;
-		var first_half = barbell_emulator.substr(0, (barbell_emulator.length/2)-1);
-		var second_half = barbell_emulator.substr((barbell_emulator.length/2)+1, (barbell_emulator.length));
 
-		barbell_emulator = first_half + weight + second_half;
+		bb_weight = weight;
+		bb_weight_as_element = "[][][][][][" + bb_weight + "][][][][][]";
 
 		$("#bb-display").html(total)
-		$("#bb-accounted").html("accounted for! " + weight + " lbs.")
-		$("#bb-emulator").html(barbell_emulator)
+
+		$("#bb-weight-element").html(bb_weight_as_element)
 	} else {
 		barbell_accounted[0] = false;
 			
@@ -48,14 +48,11 @@ function barbell_control (weight, opposite) {
 			total -= opposite;
 		}
 
-		var first_half = barbell_emulator.substr(0, (barbell_emulator.length/2)-1);
-		var second_half = barbell_emulator.substr((barbell_emulator.length/2)+1, (barbell_emulator.length));
-
-		barbell_emulator = first_half + "00" + second_half;
+		bb_weight = 0;
+		bb_weight_as_element = "[][][][][][" + bb_weight + "][][][][][]";
 
 		$("#bb-display").html(total);
-		$("#bb-accounted").html("not accounted for!");
-		$("#bb-emulator").html(barbell_emulator);
+		$("#bb-weight-element").html(bb_weight_as_element)
 	};
 };
 
@@ -100,18 +97,22 @@ $(document).ready(()=>{
 	// LOADING WEIGHTS
 
 	$(".plate").on("click", (me)=>{
-		weight = me.currentTarget.value;
-		total += (parseFloat(weight) * 2)
+		var weight = me.currentTarget.value;
+		total += (parseFloat(weight) * 2);
+		console.log(weight)
+		if (parseFloat(weight) === 2.5) {
+			weight = "2p5"
+			console.log('HELLO');
+		}
 
-		var plate = " <span class='badge badge-secondary" + (weight + "plate'>") + weight + "</span> ";
-		console.log(barbell_emulator)
+		var plate = "<span class='pp proxyplate" + (weight + "'>") + "[]" + "</span>";
+		var unloaded = $("#bb-emulator").html();
+		//console.log(unloaded)
 
-		var loaded = plate + barbell_emulator + plate;
-		barbell_emulator = loaded;
-
+		var loaded = plate + unloaded + plate;
 
 		$("#bb-display").html(total)
-		$("#bb-emulator").html(barbell_emulator);
+		$("#bb-emulator").html(loaded);
 	});
 
 	// CUSTOM
