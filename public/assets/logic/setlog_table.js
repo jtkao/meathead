@@ -15,6 +15,7 @@ function populate(data) {
 		raw += '</tr>'
 		//console.log(raw)
 		$("#data-results-body").append(raw);
+		
 	})
 };
 

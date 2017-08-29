@@ -13,7 +13,6 @@ var bb_weight = 45;
 function reset() {
 	barbell_accounted = [false, 0];
 	bb_weight = 0
-	bb_weight_as_element = "[][][][][]" + bb_weight + "[][][][][]"
 	total = 0;
 	reps = 0;
 	sets = 1;
@@ -22,7 +21,7 @@ function reset() {
 	$("#rep-display").html(reps);
 	$("#set-display").html(sets);
 
-	$("#bb-emulator").html('<span class="badge badge-secondary pb" id="bb-weight-element"> [][][][][][0][][][][][] </span>')
+	$("#bb-emulator").html('<span class="badge badge-secondary pb" id="bb-weight-element"> |||[|][|][|][|][|][0][|][|][|][|][|]||| </span>')
 };
 
 function barbell_control (weight, opposite) {
@@ -33,7 +32,7 @@ function barbell_control (weight, opposite) {
 		total += weight;
 
 		bb_weight = weight;
-		bb_weight_as_element = "[][][][][][" + bb_weight + "][][][][][]";
+		var bb_weight_as_element = "|||[|][|][|][|][|][" + bb_weight + "][|][|][|][|][|]|||";
 
 		$("#bb-display").html(total)
 
@@ -49,7 +48,7 @@ function barbell_control (weight, opposite) {
 		}
 
 		bb_weight = 0;
-		bb_weight_as_element = "[][][][][][" + bb_weight + "][][][][][]";
+		var bb_weight_as_element = "|||[|][|][|][|][|][" + bb_weight + "][|][|][|][|][|]|||";
 
 		$("#bb-display").html(total);
 		$("#bb-weight-element").html(bb_weight_as_element)
