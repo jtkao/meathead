@@ -1,5 +1,6 @@
 var read_sets = require("../models/model_read.js");
 var create_sets = require("../models/model_create.js");
+var update_sets = require("../models/model_update.js");
 
 function to_view(response, result){
 	result.forEach((set)=>{
@@ -112,7 +113,22 @@ module.exports = function(app) {
 
 	app.post("/add_set_note", (req, res)=>{
 		console.log(req.body);
-		res.end();
+		var set_id = req.body.set_id;
+		var content = req.body.content;
+
+		create_sets.add_set_note(set_id, content, (result)=>{
+			res.send(result);
+		})
+	});
+
+	app.post("/update_set_note", (req, res)=>{
+		console.log(req.body);
+		var set_id = req.body.set_id;
+		var content = req.body.content;
+
+		update_sets.update_notes(set_id, content, (result)=>{
+			res.send(result);
+		})
 	})
 
 

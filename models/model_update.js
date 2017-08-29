@@ -39,6 +39,7 @@ var model_update = {
 	},
 	//
 	update_notes: function(set_id, updated_content, callback) {
+		console.log("MODEL:", set_id, updated_content);
 		orm_update.edit_set_notes(set_id, updated_content, (result)=>{
 			callback(result);
 			return result;

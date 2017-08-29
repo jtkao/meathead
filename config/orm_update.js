@@ -1,6 +1,6 @@
 var connection = require('./connection.js');
 
-function execute(callback, query_string) {
+function execute(query_string, callback) {
 	console.log(query_string);
 	connection.query(query_string, (error, result) => {
 		if (error) {throw error};

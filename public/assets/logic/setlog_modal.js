@@ -11,16 +11,27 @@ function set_commentary(element, message, route, property){
 		datatype: "json",
 		data: {"set_id": set_id}
 	}).done((data)=>{
-		// console.log(data)
+		console.log(data)
 
-		if (property === "content") {
-			$("#submit-condition-id").val(data[0].set_id);
-		} else {
-			$("#submit-condition-id-note").val(data[0].set_id);
-		}
+		// assign selected set_id to both submit buttons 
+		$(".submit-commentary").val(data[0].set_id)
 	
 		$("#setlog-modal-head").html(message + " for set id #" + data[0].set_id);
 		$("#setlog-modal-body").html("");
+
+		if (property === "content") {
+			$("#add-set-condition").hide();
+			$("#add-set-note").show();
+			
+			if (data.length > 1) {
+				$("#note-content").html(data[1][property]);
+			} else {
+				$("#note-content").html("");
+			}
+		} else {
+			$("#add-set-condition").show();
+			$("#add-set-note").hide();
+		}
 
 		if (data.length > 1) {
 
@@ -33,14 +44,6 @@ function set_commentary(element, message, route, property){
 		} else if (data.length === 1) {
 			$("#setlog-modal-body").html("no data");
 			$("#setlog-modal").modal("show");
-		}
-
-		if (property === "content") {
-			$("#add-set-condition").hide();
-			$("#add-set-note").show();
-		} else {
-			$("#add-set-condition").show();
-			$("#add-set-note").hide();
 		}
 	})
 }
@@ -79,7 +82,6 @@ $(document).ready(()=>{
 		event.preventDefault();
 		var set_id = $("#submit-condition-id").val();
 		var condition_id = $("#condition-selection").val();
-		console.log(condition_id)
 		var request = {
 			"set_id": set_id,
 			"condition_id": condition_id
@@ -95,8 +97,8 @@ $(document).ready(()=>{
 	});
 
 	$("#add-set-note").on("submit", (event)=>{
-		console.log("hello")
 		event.preventDefault();
+
 		var set_id = $("#submit-condition-id-note").val();
 		var content = $("#note-content").val();
 
@@ -105,13 +107,32 @@ $(document).ready(()=>{
 			"content": content
 		}
 
-		$.ajax({
-			url: "add_set_note",
-			method: "POST",
-			data: request
-		}).done((response)=>{
-			console.log(response)
-		})
+		var modal_body = $("#setlog-modal-body").html();
+
+		// if modal_body !("no data") request must be update
+		if (modal_body === "no data") {
+			$.ajax({
+				url: "add_set_note",
+				method: "POST",
+				data: request
+			}).done((response)=>{
+				console.log(response)
+				var successful_request = request;
+				console.log("successful", successful_request)
+				$("#setlog-modal-body").html(successful_request.content);
+			})
+		} else {
+			$.ajax({
+				url: "update_set_note",
+				method: "POST",
+				data: request
+			}).done((response)=>{
+				console.log(response)
+				var successful_request = request;
+				console.log("successful", successful_request)
+				$("#setlog-modal-body").html(successful_request.content);
+			})
+		}
 	})
 	//end 
 });
