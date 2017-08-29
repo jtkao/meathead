@@ -3,27 +3,26 @@
 
 <div class="container-fluid">
 	<div class="panel panel-default" id="data-control">
-		<div class="panel-heading">
-			data control 
-			<button id="data-controls"> show </button>
+		<div class="panel-heading" id="data-control-heading">
+			<button class="btn btn-xs" id="data-controls"> search </button>
 			<!-- Trigger the modal with a button -->
 		</div>
 		<div class="panel-body" id="control-box" id="get-week">
 
 			<form class="form-inline" id="get-week">
-				<button class="btn btn-default" type="submit"> week </button>
+				<button class="btn btn-default btn-xs" type="submit"> week </button>
 			</form>
 
 			<form class="form-inline" id="get-all">
-				<button class="btn btn-default" type="submit"> all </button>
+				<button class="btn btn-default btn-xs" type="submit"> all </button>
 			</form>
 
 			<form class="form-inline" id="get-date">
 				<div class="form-group">					
 					<input class="form-control" type="date" id="date-input">  
 				</div>
-				<button class="btn btn-default" type="submit">date</button>
-				<button class="btn btn-default" id="get-today">today</button>
+				<button class="btn btn-default btn-xs" type="submit">date</button>
+				<button class="btn btn-default btn-xs" id="get-today">today</button>
 			</form>
 
 			<form class="form-inline" id="get-month">
@@ -43,7 +42,7 @@
 						<option value=12> December </option>
 					</select>
 				</div>
-				<button class="btn btn-default" type="submit">month</button>
+				<button class="btn btn-default btn-xs" type="submit">month</button>
 			</form>
 
 			<form class="form-inline" id="get-movement">
@@ -54,7 +53,7 @@
 						{{/each}}
 					</select>
 				</div>
-				<button class="btn btn-default" type="submit">movement</button>
+				<button class="btn btn-default btn-xs" type="submit">movement</button>
 			</form>
 
 			<form class="form-inline" id="get-1rm">
@@ -65,13 +64,12 @@
 						{{/each}}
 					</select>
 				</div>
-				<button class="btn btn-default" type="submit">1rm</button>
+				<button class="btn btn-default btn-xs" type="submit">1rm</button>
 			</form>
 
 		</div>
 	</div>
 </div>
-
 
 <div class="container-fluid" id="data-results">
 	<table class="table">

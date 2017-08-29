@@ -60,6 +60,8 @@ $(document).ready(()=>{
 				$("#setlog-modal-head").html("1 REP MAX ON " + data[0]["movement_name"]);
 				$("#setlog-modal-body").html(data[0]["MAX(`weight`)"]);
 				$("#setlog-modal").modal("show");
+				$("#add-set-condition").hide();
+				$("#add-set-note").hide();
 			}
 		});
 	});

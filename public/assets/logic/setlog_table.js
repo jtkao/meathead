@@ -1,4 +1,5 @@
 function populate(data) {
+	$("#control-box").hide();
 	$("#data-results-body").html("");
 	// generate table elements loaded with response data
 	data.forEach((set)=>{
@@ -24,10 +25,8 @@ $(document).ready(()=>{
 	$("#data-controls").on("click", ()=>{
 		var control_box = $("#control-box");
 		if (control_box.is(":visible")) {
-			$("#data-controls").html("show");
 			control_box.hide();
 		} else {
-			$("#data-controls").html("hide");
 			control_box.show();
 		};
 	});
