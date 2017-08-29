@@ -94,7 +94,6 @@ $(document).ready(()=>{
 		var request = {
 			"set_id": set_id,
 			"condition_id": condition_id,
-			"condition_name": condition_name
 		}
 
 		console.log(request)
@@ -104,9 +103,9 @@ $(document).ready(()=>{
 			method: "POST",
 			data: request
 		}).done((response)=>{
-			console.log("SUCCESSFUL CONDITION ADD", response)
-			console.log("added", request)
-			location.reload(false);
+			console.log("SUCCESSFUL CONDITION ADD", response);
+			var set_id = request.set_id;
+			set_commentary(set_id, "conditions", "/find_set_conditions", "condition_name");
 		})
 	});
 	// SUBMIT REQUEST containing user input to CREATE or UPDATE NOTE 
