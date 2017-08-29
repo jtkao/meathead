@@ -103,7 +103,7 @@ $(document).ready(()=>{
 		weight = me.currentTarget.value;
 		total += (parseFloat(weight) * 2)
 
-		var plate = " [" + weight + "] ";
+		var plate = " <span class='badge badge-secondary" + (weight + "plate'>") + weight + "</span> ";
 		console.log(barbell_emulator)
 
 		var loaded = plate + barbell_emulator + plate;
