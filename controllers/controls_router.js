@@ -13,4 +13,3 @@ module.exports = function(app) {
 		res.end();
 	})
 }
-}
