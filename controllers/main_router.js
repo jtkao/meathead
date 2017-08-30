@@ -25,4 +25,7 @@ module.exports = function(app) {
 		})
 	});
 
+	app.get("/controls", (req, res)=>{
+		res.send("controls")
+	})
 }
