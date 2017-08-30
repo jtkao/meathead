@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //router
 require('./controllers/main_router.js')(app)
 require('./controllers/setlog_router.js')(app)
+require('./controllers/controls_router.js')(app)
 
 app.listen(PORT, function() {
 	console.log("App listening on PORT " + PORT);
