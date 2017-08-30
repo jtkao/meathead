@@ -1,6 +1,6 @@
 $(document).ready(()=>{
 	$("#add-t-movements").on("submit", (event)=>{
-		var movement = $("#t-movements-input").val().trim();
+		var movement = $("#t-movements-input").val().trim().toUpperCase();;
 		console.log(movement);
 		var data_movement = {"movement_name": movement};
 
@@ -12,7 +12,7 @@ $(document).ready(()=>{
 	})
 
 	$("#add-t-conditions").on("submit", (event)=>{
-		var condition = $("#t-conditions-input").val().trim();
+		var condition = $("#t-conditions-input").val().trim().toUpperCase();;
 		console.log(condition);
 		var data_condition = {"condition_name": condition};
 
