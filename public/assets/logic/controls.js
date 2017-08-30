@@ -7,7 +7,7 @@ $(document).ready(()=>{
 		$.ajax({
 			url: "new_t_movement",
 			method: "POST",
-			data: {"movement_name": data_movement}
+			data: data_movement
 		});
 	})
 
@@ -19,7 +19,7 @@ $(document).ready(()=>{
 		$.ajax({
 			url: "new_t_condition",
 			method: "POST",
-			data: {"condition_name": data_condition}
+			data: data_condition
 		});
 	})
 })
