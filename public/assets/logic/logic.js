@@ -44,7 +44,7 @@ function barbell_control (weight, opposite) {
 			total -= opposite;
 		}
 
-		var bb_weight_as_element = "|||[|][|][|][|][|][" + weight + "][|][|][|][|][|]|||";
+		var bb_weight_as_element = "|||[|][|][|][|][|][0][|][|][|][|][|]|||";
 
 		$("#bb-display").html(total);
 		$("#bb-weight-element").html(bb_weight_as_element)
