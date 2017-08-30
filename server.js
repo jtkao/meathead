@@ -17,7 +17,7 @@ require('./controllers/main_router.js')(app)
 require('./controllers/setlog_router.js')(app)
 require('./controllers/controls_router.js')(app)
 
-app.listen(PORT, function() {
+app.listen(PORT, ()=> {
 	console.log("App listening on PORT " + PORT);
 });
 
