@@ -12,7 +12,7 @@ $(document).ready(()=>{
 	})
 
 	$("#add-t-conditions").on("submit", (event)=>{
-		var condition = $("#t-conditions-input").val().trim().toUpperCase();W
+		var condition = $("#t-conditions-input").val().trim().toUpperCase();
 		console.log(condition);
 		var data_condition = {"condition_name": condition};
 
