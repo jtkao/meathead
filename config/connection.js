@@ -1,12 +1,12 @@
 var mysql = require("mysql");
 
-var db_config = mysql.createConnection({
+var db_config = {
   port: 3306,   
   host: "us-cdbr-iron-east-05.cleardb.net",
   user: "b780b2f71cbafc",
   password: "b18ec129",
   database: "heroku_5284d4c914ea5c8",
-});
+};
 
 var connection;
 
@@ -33,4 +33,4 @@ function handleDisconnect() {
 
 handleDisconnect();
 
-module.exports = db_config;
+module.exports = connection;
