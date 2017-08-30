@@ -32,17 +32,20 @@ function set_commentary(element, message, route, property){
 			$("#add-set-condition").show();
 			$("#add-set-note").hide();
 		}
-		// if there is commentary data, load it
-		if (data.length > 1) {
+		// condition data needs to be loaded with a button to remove 
+		if ((data.length > 1) && (property === "condition_name")) {
 			for (var i = 1; i < data.length; i++) {
-				var element = "<p>" + data[i][property] + "</p>";
-				$("#setlog-modal-body").append(element);
+				var condition_element = "<p class='remove-condition'>" + data[i]["condition_name"] + "</p>";
+				$("#setlog-modal-body").append(condition_element);
 			}
-			$("#setlog-modal").modal("show");
+		} else if ((data.length > 1) && (property === "content")) {
+			var note_element = "<p>" + data[1]["content"] + "</p>";
+			$("#setlog-modal-body").append(note_element);
 		} else if (data.length === 1) {
 			$("#setlog-modal-body").html("no data");
-			$("#setlog-modal").modal("show");
 		}
+		$("#setlog-modal").modal("show");
+
 	})
 }
 // ajax call for creating or updating NOTES
