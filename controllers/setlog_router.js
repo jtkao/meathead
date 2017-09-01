@@ -14,9 +14,10 @@ function to_view(response, result){
 module.exports = function(app) {
 
 	app.get("/setlog", (req,res)=>{
-		var month = "MONTH(CURDATE())"
+		var today = new Date();
+		var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
-		read_sets.find_for_month(month, (result)=>{
+		read_sets.find_on_date(date, (result)=>{
 			var test = result;
 
 			test.forEach((set)=>{
