@@ -56,9 +56,7 @@ function note_ajax(route, req) {
 		method: "POST",
 		data: req
 	}).done((response)=>{
-		console.log(response)
-		var set_id = req.set_id
-		set_commentary(set_id, "notes", "/find_set_notes", "content");		
+		console.log("NOTE RESPONSE", response)	
 	})
 }
 
@@ -91,8 +89,6 @@ $(document).ready(()=>{
 			data: request
 		}).done((response)=>{
 			console.log("SUCCESSFUL CONDITION ADD", response);
-			var set_id = request.set_id;
-			set_commentary(set_id, "conditions", "/find_set_conditions", "condition_name");
 		})
 	});
 

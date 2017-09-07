@@ -87,7 +87,7 @@ module.exports = function(app) {
 		read_sets.find_set_notes(id, (result)=>{
 			var set_id = [{"set_id": id}];
 			var response = set_id.concat(result);
-			to_view(res, response);
+			res.send(response)
 		});
 	});
 
@@ -97,7 +97,7 @@ module.exports = function(app) {
 		read_sets.find_set_conditions(id, (result)=>{
 			var set_id = [{"set_id": id}];
 			var response = set_id.concat(result);
-			to_view(res, response);
+			res.send(response)
 		});
 	});
 	//
