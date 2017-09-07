@@ -14,25 +14,11 @@ function to_view(response, result){
 module.exports = function(app) {
 
 	app.get("/setlog", (req,res)=>{
-		var today = new Date();
-		var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
-		read_sets.find_on_date(date, (result)=>{
-			var test = result;
-
-			test.forEach((set)=>{
-				var date_to_string = String(set.set_date).substring(4,15);
-				set.set_date = date_to_string;
-			});
-
-			read_sets.find_movements((movements)=>{
-				var set_data = test;
-				var mvmt_data = movements;
-				//res.render("setlog", {"logged":test, "mvmt":movements})
-				read_sets.find_conditions((conditions)=>{
-					res.render("setlog", {"logged":test, "mvmt":movements, "conditions":conditions})
-				})
-			});
+		read_sets.find_movements((movements)=>{
+			var mvmt_data = movements;
+			read_sets.find_conditions((conditions)=>{
+				res.render("setlog", {"mvmt":movements, "conditions":conditions})
+			})
 		});
 	});
 

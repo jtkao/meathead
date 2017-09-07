@@ -4,7 +4,7 @@
 
 <div class="card" id="data-control">
 	<div class="card-header" id="data-control-heading">
-		<button class="btn btn-xs" id="data-controls"> search </button>
+		<button class="btn" id="data-controls"> search </button>
 	</div>
 
 	<div class="card-body" id="control-box">
@@ -12,13 +12,13 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col">
-					<button class="btn btn-lg" id="get-today">today</button>
+					<button id="get-today" class="btn btn-lg search-sets">today</button>
 				</div>
 				<div class="col">
-					<button id="get-week" class="btn btn-lg" type="submit"> week </button>
+					<button id="get-week" class="btn btn-lg search-sets" type="submit"> week </button>
 				</div>
 				<div class="col">
-					<button id="get-all" class="btn btn-lg" type="submit"> all </button>
+					<button id="get-all" class="btn btn-lg search-sets" type="submit"> all </button>
 				</div>
 			</div>
 			<br>
@@ -28,7 +28,7 @@
 						<div class="form-group">					
 							<input class="form-control" type="date" id="date-input">  
 						</div>
-						<button class="btn" type="submit">date</button>
+						<button class="btn search-sets" type="submit">date</button>
 					</form>
 				</div>
 				<div class="col">
@@ -49,7 +49,7 @@
 								<option value=12> December </option>
 							</select>
 						</div>
-						<button class="btn" type="submit">month</button>
+						<button class="btn search-sets" type="submit">month</button>
 					</form>
 				</div>
 				<div class="col">
@@ -61,7 +61,7 @@
 								{{/each}}
 							</select>
 						</div>
-						<button class="btn" type="submit">movement</button>
+						<button class="btn search-sets" type="submit">movement</button>
 					</form>				
 				</div>
 			</div>

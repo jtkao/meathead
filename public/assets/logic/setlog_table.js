@@ -21,7 +21,6 @@ function populate(data) {
 
 $(document).ready(()=>{
 	// toggle control panel 
-	$("#control-box").hide();
 	$("#data-controls").on("click", ()=>{
 		var control_box = $("#control-box");
 		if (control_box.is(":visible")) {
