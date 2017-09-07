@@ -10,16 +10,8 @@ body,html {
 	color: white;
 }
 
-#main-foot {
-	text-align: center;
-	background-color: black;
-	height: 30px;
-	color: white;
-}
-
 #main-body {
-	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-top: 30px;
 	background-color: gainsboro;
 }
 
@@ -98,9 +90,6 @@ body,html {
 	background-color: white;
 }
 
-#data-results {
-	background-color: white;
-}
 .modal-dialog {
         position: absolute;
         top: 100px;
@@ -118,11 +107,9 @@ body,html {
 
 .get-notes:hover, .get-conditions:hover {
 	background-color: yellow;
-	color: white;
 }
 
 .table-data:hover {
-	font-weight: bold;
 	background-color: palegreen;
 }
 
@@ -167,13 +154,10 @@ body,html {
 
 .pp {
 	border: 1px solid black;
-	padding: 2px;
-}
-
-#data-control{
-	background-color: darkgray;
+	padding-bottom: 5px;
 }
 
 #bb-weight-element{
-	color: gainsboro;
+	color: ghostwhite;
+	padding-bottom: 5px;
 }

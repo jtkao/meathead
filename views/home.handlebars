@@ -1,28 +1,17 @@
-<div class="panel panel-default" id="bb-box">
-	<div class="panel-body"> 
-		<button class="btn" id="bb45"> 45lb barbell </button>
-		<button class="btn" id="bb55"> 55lb barbell </button>
-		<button class="btn" id="bb-clear"> clear barbell </button>
-	</div>
-</div>
-
 <div class="container-fluid">
 	<div class="row" id="main-display">
-		<div class="col-xs-1"> </div>
-		<div class="col-xs-2"> <h1 id="bb-display"> 45 </h1> </div>
-		<div class="col-xs-2"> <h2> lbs. </h2> </div>
-		<div class="col-xs-2"> <h1 id="set-display">  1 </h1> </div>
-		<div class="col-xs-2"> <h2>  x </h2> </div>
-		<div class="col-xs-2"> <h1 id="rep-display"> 0 </h1> </div>
-		<div class="col-xs-1"> </div>
+		<div class="col"> <h1 id="bb-display"> 45 </h1> </div>
+		<div class="col"> <h1 id="set-display">  1 </h1> </div>
+		<div class="col"> <h2>  x </h2> </div>
+		<div class="col"> <h1 id="rep-display"> 0 </h1> </div>
 	</div>
 </div>
-
-<div class="panel panel-default" id="load-box">
-	<div class="panel-heading" id="bb-emulator">
+<br>
+<div class="card" id="load-box">
+	<div class="card-header" id="bb-emulator">
 		<span class="badge badge-secondary pb" id="bb-weight-element"> |||[|][|][|][|][|][45][|][|][|][|][|]||| </span>
 	</div>
-	<div class="form-inline panel-body">
+	<div class="form-inline card-body">
 		<button class="btn plate b55" value="55"> <strong> 55 </strong> </button>
 		<button class="btn plate b45" value="45"> <strong> 45 </strong> </button>
 		<button class="btn plate b35" value="35"> <strong> 35 </strong> </button>
@@ -34,30 +23,41 @@
 	</div>
 </div>
 
-<div class="panel panel-default" id="enter-box">
-  	<div class="panel-heading">
+<div class="card" id="enter-box">
+  	<div class="card-header">
   		enter weight 
   		<a id="custom-display"> 0 </a> 
   	</div>
-	<div class="btn-group panel-body">
-		<button class="btn numbtn" value="0"> <strong> 0 </strong> </button>
-		<button class="btn numbtn" value="1"> <strong> 1 </strong> </button>
-		<button class="btn numbtn" value="2"> <strong> 2 </strong> </button>
-		<button class="btn numbtn" value="3"> <strong> 3 </strong> </button>
-		<button class="btn numbtn" value="4"> <strong> 4 </strong> </button>
-		<button class="btn numbtn" value="5"> <strong> 5 </strong> </button>
-		<button class="btn numbtn" value="6"> <strong> 6 </strong> </button>
-		<button class="btn numbtn" value="7"> <strong> 7 </strong> </button>
-		<button class="btn numbtn" value="8"> <strong> 8 </strong> </button>
-		<button class="btn numbtn" value="9"> <strong> 9 </strong> </button>
+	<div class="card-body">
+		<div class="btn-group">
+			<button class="btn numbtn" value="0"> <strong> 0 </strong> </button>
+			<button class="btn numbtn" value="1"> <strong> 1 </strong> </button>
+			<button class="btn numbtn" value="2"> <strong> 2 </strong> </button>
+			<button class="btn numbtn" value="3"> <strong> 3 </strong> </button>
+			<button class="btn numbtn" value="4"> <strong> 4 </strong> </button>
+			<button class="btn numbtn" value="5"> <strong> 5 </strong> </button>
+			<button class="btn numbtn" value="6"> <strong> 6 </strong> </button>
+			<button class="btn numbtn" value="7"> <strong> 7 </strong> </button>
+			<button class="btn numbtn" value="8"> <strong> 8 </strong> </button>
+			<button class="btn numbtn" value="9"> <strong> 9 </strong> </button>
+		</div>
+		<button class="btn" id="custom-backspace"> back </button>
+		<button class="btn" id="set-custom"> set weight </button>
+		<button class="btn" id="toggle-load"> switch </button>
 	</div>
-	<button class="btn" id="custom-backspace"> back </button>
-	<button class="btn" id="set-custom"> set weight </button>
-	<button class="btn" id="toggle-load"> switch </button>
 </div>
 
-<div class="panel panel-default" id="rep-box">	
-	<div class="panel-body">
+<div class="card" id="bb-box">
+	<div class="card-body"> 
+		<button class="btn btn-sm" id="bb45"> 45lb barbell </button>
+		<button class="btn btn-sm" id="bb55"> 55lb barbell </button>
+		<button class="btn btn-sm" id="bb-clear"> clear barbell </button>
+	</div>
+</div>
+
+
+<div class="card" id="rep-box">	
+	<div class="card-body">
 		<label> sets </label>
 		<div class="btn-group">
 			<button class="btn" id="setup"> <strong> + </strong> </button>
@@ -71,7 +71,7 @@
 		</div>
 	</div>
 </div>
-
+<br>
 <button class="btn" id="begin-log"> log </button>
 
 <!-- Modal -->
