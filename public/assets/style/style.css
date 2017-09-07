@@ -172,6 +172,15 @@ body,html {
 	color: white;
 }
 
-.search-sets {
+.primary-search {
 	background-color: lightgreen;
+	width: 100%;
+}
+
+.input-search {
+	width: 100%;
+}
+
+button.input-search {
+	background-color: mediumaquamarine;
 }
