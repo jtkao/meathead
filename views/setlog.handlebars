@@ -24,12 +24,12 @@
 			<br>
 			<div class="row">
 				<div class="col">
-							<form class="form-inline" id="get-date">
-								<div class="form-group">					
-									<input class="form-control" type="date" id="date-input">  
-								</div>
-								<button class="btn" type="submit">date</button>
-							</form>
+					<form class="form-inline" id="get-date">
+						<div class="form-group">					
+							<input class="form-control" type="date" id="date-input">  
+						</div>
+						<button class="btn" type="submit">date</button>
+					</form>
 				</div>
 				<div class="col">
 					<form class="form-inline" id="get-month">
@@ -91,47 +91,45 @@
 	</div>
 </div>
 
-<!-- Modal -->
-<div id="setlog-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<div class="modal fade" id="setlog-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="setlog-modal-head">NO DATA</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+      		</div>
+      
+      		<div id="setlog-modal-body" class="modal-body">
+        		NO DATA
+      		</div>
+      		
+      		<div class="modal-footer">
+        		<form class="form-inline" id="add-set-condition">
+					<div class="form-group">
+						<select class="form-control" id="condition-selection">
+							{{#each conditions}}
+								<option value={{condition_id}}> {{condition_name}} </option>
+							{{/each}}
+						</select>
+					</div>
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" id="close-modal">&times;</button>
-        <h4 class="modal-title" id="setlog-modal-head">NO DATA</h4>
-      </div>
-      <div class="modal-body" id="setlog-modal-body">
-        NO DATA
-      </div>
-      <div class="modal-footer">
-        
-        <form class="form-inline" id="add-set-condition">
-			<div class="form-group">
-				<select class="form-control" id="condition-selection">
-					{{#each conditions}}
-						<option value={{condition_id}}> {{condition_name}} </option>
-					{{/each}}
-				</select>
-			</div>
+					<button class="btn btn-danger btn-md submit-commentary" id="submit-condition-id" value=0 type="submit">
+						add condition
+					</button>
+				</form>
 
-			<button class="btn btn-danger btn-md submit-commentary" id="submit-condition-id" value=0 type="submit">
-				add condition
-			</button>
-		</form>
+				<form class="form-inline" id="add-set-note">
+					<div class="form-group">
+						<textarea id="note-content" class="form-control"></textarea>
+					</div>
 
-		<form class="form-inline" id="add-set-note">
-			<div class="form-group">
-				<textarea id="note-content" class="form-control"></textarea>
-			</div>
-
-			<button class="btn btn-primary btn-md submit-commentary" id="submit-condition-id-note" placeholder="" value=0 type="submit">
-				add note
-			</button>
-		</form>
-      </div>
+					<button class="btn btn-primary btn-md submit-commentary" id="submit-condition-id-note" placeholder="" value=0 type="submit">
+						add note
+					</button>
+				</form>
+      		</div>
+    	</div>
     </div>
-
-  </div>
-
 </div>

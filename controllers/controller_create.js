@@ -14,21 +14,21 @@ module.exports = function(app) {
 	//	})
 	//});
 
-	app.post("/add_condition", (req, res)=>{
-		var condition_name = "fatgripz";
+	// app.post("/add_condition", (req, res)=>{
+	// 	var condition_name = "fatgripz";
 
-		sets.add_condition(condition_name, (result)=>{
-			res.send(result)
-		});
-	});
+	// 	sets.add_condition(condition_name, (result)=>{
+	// 		res.send(result)
+	// 	});
+	// });
 
-	app.post("/add_movement", (req, res)=>{
-		var movement_name = "OVERHEAD PRESS";
+	// app.post("/add_movement", (req, res)=>{
+	// 	var movement_name = "OVERHEAD PRESS";
 
-		sets.add_movement(movement_name, (result)=>{
-			res.send(result)
-		});
-	});
+	// 	sets.add_movement(movement_name, (result)=>{
+	// 		res.send(result)
+	// 	});
+	// });
 
 	//app.post("/add_set_condition", (req, res)=>{
 	//	var set_id = 13;

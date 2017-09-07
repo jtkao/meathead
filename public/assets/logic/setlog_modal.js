@@ -44,6 +44,7 @@ function set_commentary(element, message, route, property){
 		} else if (data.length === 1) {
 			$("#setlog-modal-body").html("no data");
 		}
+
 		$("#setlog-modal").modal("show");
 
 	})
@@ -62,23 +63,6 @@ function note_ajax(route, req) {
 }
 
 $(document).ready(()=>{
-	// return 1 rep maximum for a MOVEMENT
-	$("#get-1rm").on("submit", (event)=>{ event.preventDefault();
-		var movement_id = $("#1rm-movement-selection").val();
-		$.ajax({
-			url: "/find_1rm",
-			method: "POST",
-			data: {"movement_id": movement_id},
-			success: (data)=>{
-				console.log(data[0]["movement_name"])
-				$("#setlog-modal-head").html("1 REP MAX ON " + data[0]["movement_name"]);
-				$("#setlog-modal-body").html(data[0]["MAX(`weight`)"]);
-				$("#setlog-modal").modal("show");
-				$("#add-set-condition").hide();
-				$("#add-set-note").hide();
-			}
-		});
-	});
 	// get NOTES for a set, load modal with data, **prepare form for user input**
 	$("#data-results-body").on("click", "button.get-notes",(me)=>{
 		var set_id = me.target.value;
@@ -90,7 +74,7 @@ $(document).ready(()=>{
 		set_commentary(set_id, "conditions", "/find_set_conditions", "condition_name");
 	});
 	// SUBMIT REQUEST containing user input to ADD CONDITION
-	$("#add-set-condition").on("submit", (event)=>{ event.preventDefault();
+	$("#add-set-condition").on("submit", (event)=>{ 
 		var set_id = $("#submit-condition-id").val();
 		var condition_id = $("#condition-selection").val();
 
@@ -111,8 +95,9 @@ $(document).ready(()=>{
 			set_commentary(set_id, "conditions", "/find_set_conditions", "condition_name");
 		})
 	});
+
 	// SUBMIT REQUEST containing user input to CREATE or UPDATE NOTE 
-	$("#add-set-note").on("submit", (event)=>{ event.preventDefault();
+	$("#add-set-note").on("submit", (event)=>{ 
 		var set_id = $("#submit-condition-id-note").val();
 		var content = $("#note-content").val();
 		var request = {
