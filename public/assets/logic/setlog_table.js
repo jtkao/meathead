@@ -31,7 +31,7 @@ $(document).ready(()=>{
 		};
 	});
 	// get all sets in range (today, today-7)
-	$("#get-week").on("submit", (event)=>{ event.preventDefault();
+	$("#get-week").on("click", (event)=>{ event.preventDefault();
 		console.log("GET week")
 		$.ajax({
 			url: "/find_sets_for_week",
@@ -40,7 +40,7 @@ $(document).ready(()=>{
 		});
 	});
 	// get all sets in database
-	$("#get-all").on("submit", (event)=>{ event.preventDefault();
+	$("#get-all").on("click", (event)=>{ event.preventDefault();
 		console.log("GET ALL")
 		$.ajax({
 			url: "/find_all_sets",

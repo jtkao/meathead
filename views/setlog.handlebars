@@ -5,73 +5,70 @@
 <div class="card" id="data-control">
 	<div class="card-header" id="data-control-heading">
 		<button class="btn btn-xs" id="data-controls"> search </button>
-		<!-- Trigger the modal with a button -->
 	</div>
 
-	<div class="card-body" id="control-box" id="get-week">
+	<div class="card-body" id="control-box">
 
-		<form class="form-inline" id="get-week">
-			<button class="btn  btn-xs" type="submit"> week </button>
-		</form>
-
-		<form class="form-inline" id="get-all">
-			<button class="btn  btn-xs" type="submit"> all </button>
-		</form>
-
-		<form class="form-inline" id="get-date">
-			<div class="form-group">					
-				<input class="form-control" type="date" id="date-input">  
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col">
+					<button class="btn btn-lg" id="get-today">today</button>
+				</div>
+				<div class="col">
+					<button id="get-week" class="btn btn-lg" type="submit"> week </button>
+				</div>
+				<div class="col">
+					<button id="get-all" class="btn btn-lg" type="submit"> all </button>
+				</div>
 			</div>
-			<button class="btn  btn-xs" type="submit">date</button>
-			<button class="btn  btn-xs" id="get-today">today</button>
-		</form>
-
-		<form class="form-inline" id="get-month">
-			<div class="form-group">
-				<select class="form-control" id="month-selection">
-					<option value=1> January </option>
-					<option value=2> Februrary </option>
-					<option value=3> March </option>
-					<option value=4> April </option>
-					<option value=5> May </option>
-					<option value=6> June </option>
-					<option value=7> July </option>
-					<option value=8> August </option>
-					<option value=9> September </option>
-					<option value=10> October </option>
-					<option value=11> November </option>
-					<option value=12> December </option>
-				</select>
+			<br>
+			<div class="row">
+				<div class="col">
+							<form class="form-inline" id="get-date">
+								<div class="form-group">					
+									<input class="form-control" type="date" id="date-input">  
+								</div>
+								<button class="btn" type="submit">date</button>
+							</form>
+				</div>
+				<div class="col">
+					<form class="form-inline" id="get-month">
+						<div class="form-group">
+							<select class="form-control" id="month-selection">
+								<option value=1> January </option>
+								<option value=2> Februrary </option>
+								<option value=3> March </option>
+								<option value=4> April </option>
+								<option value=5> May </option>
+								<option value=6> June </option>
+								<option value=7> July </option>
+								<option value=8> August </option>
+								<option value=9> September </option>
+								<option value=10> October </option>
+								<option value=11> November </option>
+								<option value=12> December </option>
+							</select>
+						</div>
+						<button class="btn" type="submit">month</button>
+					</form>
+				</div>
+				<div class="col">
+					<form class="form-inline" id="get-movement">
+						<div class="form-group">
+							<select class="form-control" id="movement-selection">
+								{{#each mvmt}}
+									<option value={{movement_id}}> {{movement_name}} </option>
+								{{/each}}
+							</select>
+						</div>
+						<button class="btn" type="submit">movement</button>
+					</form>				
+				</div>
 			</div>
-			<button class="btn  btn-xs" type="submit">month</button>
-		</form>
-
-		<form class="form-inline" id="get-movement">
-			<div class="form-group">
-				<select class="form-control" id="movement-selection">
-					{{#each mvmt}}
-						<option value={{movement_id}}> {{movement_name}} </option>
-					{{/each}}
-				</select>
-			</div>
-			<button class="btn  btn-xs" type="submit">movement</button>
-		</form>
-
-		<form class="form-inline" id="get-1rm">
-			<div class="form-group">
-				<select class="form-control" id="1rm-movement-selection">
-					{{#each mvmt}}
-						<option value={{movement_id}}> {{movement_name}} </option>
-					{{/each}}
-				</select>
-			</div>
-			<button class="btn  btn-xs" type="submit">1rm</button>
-		</form>
-
+		</div>
 	</div>
 </div>
 <br>
-
 
 <div class="card" id="data-results">
 	<div class="card-body">
