@@ -21,20 +21,26 @@
 
 <body>
 
-<nav id="main-head" class="navbar-fixed-top container-fluid">
-	<div class="row">
-		<div class="col"> MEATHEAD </div>
-		<div class="col"> </div>
-		<div class="col"> </div>
-		<div class="col"> </div>
-		<div class="col"> </div>
-		<div class="col form-inline" id="nav-box">
-			<a class="btn " id="go-home" href="/"> log </a>
-			<a class="btn " id="go-traininglog" href="/setlog"> view </a>
-			<a class="btn " id="go-controls" href="/controls"> controls </a>
-		</div>
-	</div>
-</nav>
+<div class="container-fluid">
+	<nav class="navbar fixed-top" id="main-head">
+		<nav class="navbar-brand"> 
+			MEATHEAD 
+		</nav>
+
+		<ul class="nav" id="nav-box">
+			<li class="nav-item">
+				<a class="btn " id="go-home" href="/"> log </a>
+			</li>
+			<li class="nav-item">
+				<a class="btn " id="go-traininglog" href="/setlog"> view </a>
+			</li>
+			<li class="nav-item">
+				<a class="btn " id="go-controls" href="/controls"> controls </a>
+			</li>
+		</ul>
+		
+	</nav>
+</div>
 
 <div id="main-body" class="container-fluid">
 	{{{body}}}
