@@ -82,43 +82,46 @@
     <!-- Modal content-->
     <div class="modal-content">
     	<div class="modal-header">
-    		<button type="button" class="close" data-dismiss="modal" id="closeme">x</button>
     		<h4 class="modal-title" id="home-modal-head">NO DATA</h4>
+    		<button type="button" class="close" data-dismiss="modal" id="closeme">x</button>
     	</div>
 
     	<div class="modal-body" id="home-modal-body">
     		<div class="container-fluid">
     			<form>
-    			<div class="row">
-					<div class="col form-group">
-						<select class="form-control" id="select-movement">
-							{{#each movement}}
-				                <option value={{movement_id}}> {{movement_name}} </option>
-				            {{/each}}
-				        </select>
-			        </div>
+	    			<div class="row">
+						<div class="col form-group">
+							<select class="form-control" id="select-movement">
+								{{#each movement}}
+					                <option value={{movement_id}}> {{movement_name}} </option>
+					            {{/each}}
+					        </select>
+				        </div>
 
-			        <div class="col form-group">
-			        	<select class="form-control" id="select-rpe">
-			        		<option value=0 selected="selected"> no rpe </option>
-			        		<option value=5> 5 </option>
-			        		<option value=5.5> 5.5 </option>
-			        		<option value=6> 6 </option>
-			        		<option value=6.5> 6.5 </option>
-			        		<option value=7> 7 </option>
-			        		<option value=7.5> 7.5 </option>
-			        		<option value=8> 8 </option>
-			        		<option value=8.5> 8.5 </option>
-			        		<option value=9> 9 </option>
-			        		<option value=9.5> 9.5 </option>
-			        		<option value=9.5> 10 </option>
-			        	</select>
-			        </div>
+				        <div class="col form-group">
+				        	<select class="form-control" id="select-rpe">
+				        		<option value=0 selected="selected"> no rpe </option>
+				        		<option value=5> 5 </option>
+				        		<option value=5.5> 5.5 </option>
+				        		<option value=6> 6 </option>
+				        		<option value=6.5> 6.5 </option>
+				        		<option value=7> 7 </option>
+				        		<option value=7.5> 7.5 </option>
+				        		<option value=8> 8 </option>
+				        		<option value=8.5> 8.5 </option>
+				        		<option value=9> 9 </option>
+				        		<option value=9.5> 9.5 </option>
+				        		<option value=9.5> 10 </option>
+				        	</select>
+				        </div>
+				    </div>
 
-					<div class="col form-group">
-			        	<button class="btn" type="submit" id="submit-log"> LOG DATA </button>
-			        </div>
-			    </div>
+					<div class="row">
+						<div class="col form-group">
+				        	<button class="btn input-search" type="submit" id="submit-log"> LOG DATA </button>
+				        </div>
+				    </div>
+				</div>
 	        </form>
 	    </div>
     </div>
