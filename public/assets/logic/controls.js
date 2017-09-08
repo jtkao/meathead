@@ -27,7 +27,7 @@ $(document).ready(()=>{
 		console.log("dummy")
 		var dummy = {};
 		$.ajax({
-			url: "/delete_set_condition",
+			url: "/delete_set_record",
 			method: "POST",
 			data: dummy
 		});

@@ -20,6 +20,13 @@ var model_delete = {
 			callback(result);
 			return result;
 		})
+	},
+
+	erase_set_conditions: function(set_id, callback) {
+		orm_delete.delete_set_conditions(set_id, (result)=>{
+			callback(result);
+			return result;
+		})
 	}
 };
 
