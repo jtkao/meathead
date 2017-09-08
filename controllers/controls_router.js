@@ -38,14 +38,19 @@ module.exports = function(app) {
 
 	app.post("/delete_set_record", (req, res)=>{
 		var set_id = req.body.set_id;
+		console.log(set_id);
 
-		delete_sets.erase_set_note(set_id, (result)=>{
-			delete_sets.erase_set_conditions(set_id, (result)=>{
-				delete_sets.erase_set(set_id, (result)=>{
-					res.send(result);
+		if (set_id.length > 0){
+			delete_sets.erase_set_note(set_id, (result)=>{
+				delete_sets.erase_set_conditions(set_id, (result)=>{
+					delete_sets.erase_set(set_id, (result)=>{
+						res.send(result);
+					})
 				})
-			})
-		})
+			});
+		} else {
+			res.send("invalid")
+		}
 	});
 
 	// end controls router
