@@ -78,6 +78,14 @@ var model_read = {
 			callback(result);
 			return result;
 		})
+	},
+
+	// for auth
+	return_hash: function(callback) {
+		orm_read.select_hash((result)=>{
+			callback(result);
+			return result;
+		})
 	}
 };
 

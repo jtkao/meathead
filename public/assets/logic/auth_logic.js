@@ -3,6 +3,7 @@ $(document).ready(()=>{
 
 	$("#login-box").on("submit", (event)=>{ event.preventDefault();
 		var password = $("#password-input").val().trim();
+		console.log(password);
 
 		var cred = {
 			"password": password
@@ -17,7 +18,7 @@ $(document).ready(()=>{
 
 			if (data === "success") {
 				$("#controls-box").show();
-				$("#login-box").hide();
+				$("#auth-box").hide();
 			} else {
 				console.log("wrong password")
 			}

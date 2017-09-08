@@ -32,19 +32,24 @@ module.exports = function(app) {
 	});
 
 	app.post("/authenticate", (req, res)=>{
-		console.log("VERIFY LOGIN")
-		var username = req.body.username;
 		var password = req.body.password; 
 
-		bcrypt.compare(password, "$2a$10$gJtsmwV2Xlm4bs/so4osiuBsmsRagI9d0.lCNTYjnrE0jKRqsFPnm", (err, result)=>{
-			if (err) {throw err};
+		read_sets.return_hash((result)=>{
+			var hash = result[0].hash;
+			console.log("hash", hash)
 
-			if (result) {
-				res.send("success");
-			} else {
-				console.log("NOPE");
-				res.send("fail");
-			}
+			bcrypt.compare(password, hash, (err, result)=>{
+				if (err) {throw err};
+
+				if (result) {
+					res.send("success");
+				} else {
+					console.log("NOPE");
+					res.send("fail");
+				}
+			})
 		})
 	});
+
+	//end router
 }

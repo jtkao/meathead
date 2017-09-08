@@ -62,7 +62,12 @@ var orm_read = {
 	// return all set data for a given movement
 	select_by_movement: function(movement_id, callback) {
 		var query_string = "SELECT * FROM `sets` NATURAL JOIN `movements` WHERE (`movement_id`=" + movement_id + ");";
-		execute(query_string, callback)
+		execute(query_string, callback);
+	},
+	// for auth
+	select_hash: function(callback) {
+		var query_string = "SELECT (`hash`) FROM `auth` WHERE (`id`=1);"
+		execute(query_string, callback);
 	}
 // end orm_read
 };
