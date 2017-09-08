@@ -53,9 +53,13 @@ function barbell_control (weight, opposite) {
 
 
 $(document).ready(()=>{
+	$("#good-log-alert").hide();
 	$("#enter-box").hide();
 	$("#log-box").hide();
 	$('[data-toggle="tooltip"]').tooltip()
+	$("[data-hide]").on("click", ()=>{
+        $("#good-log-alert").hide();
+    });
 
 	// SWITCH
 
@@ -200,6 +204,9 @@ $(document).ready(()=>{
 				}
 			}
 		});
+
+		$("#good-log-alert-message").html(total + " " + sets + " x " + reps);
+		$("#good-log-alert").show();
 
 		reset();
 		$("#enter-box").hide();

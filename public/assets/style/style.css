@@ -188,3 +188,7 @@ body,html {
 button.input-search {
 	background-color: mediumaquamarine;
 }
+
+#good-log-alert {
+	background-color: palegreen;
+}
