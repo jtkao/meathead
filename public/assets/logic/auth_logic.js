@@ -1,5 +1,6 @@
 $(document).ready(()=>{
 	$("#controls-box").hide();
+	$("#bad-password-alert").hide();
 
 	$("#login-box").on("submit", (event)=>{ event.preventDefault();
 		var password = $("#password-input").val().trim();
@@ -17,10 +18,11 @@ $(document).ready(()=>{
 			console.log(data)
 
 			if (data === "success") {
+				$("#bad-password-alert").hide();
 				$("#controls-box").show();
 				$("#auth-box").hide();
 			} else {
-				console.log("wrong password")
+				$("#bad-password-alert").show();
 			}
 		})
 	});

@@ -33,7 +33,7 @@ module.exports = function(app) {
 
 	app.post("/authenticate", (req, res)=>{
 		var password = req.body.password; 
-
+		
 		read_sets.return_hash((result)=>{
 			var hash = result[0].hash;
 			console.log("hash", hash)
