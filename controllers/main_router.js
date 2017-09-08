@@ -1,6 +1,8 @@
 var read_sets = require("../models/model_read.js");
 var create_sets = require("../models/model_create.js");
 
+var bcrypt = require('bcrypt');
+
 module.exports = function(app) {
 
 	app.get("/", (req,res) =>{
@@ -26,6 +28,23 @@ module.exports = function(app) {
 	});
 
 	app.get("/controls", (req, res)=>{
-		res.render("controls")
-	})
+		res.render("controls");
+	});
+
+	app.post("/authenticate", (req, res)=>{
+		console.log("VERIFY LOGIN")
+		var username = req.body.username;
+		var password = req.body.password; 
+
+		bcrypt.compare(password, "$2a$10$gJtsmwV2Xlm4bs/so4osiuBsmsRagI9d0.lCNTYjnrE0jKRqsFPnm", (err, result)=>{
+			if (err) {throw err};
+
+			if (result) {
+				res.send("success");
+			} else {
+				console.log("NOPE");
+				res.send("fail");
+			}
+		})
+	});
 }

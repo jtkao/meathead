@@ -37,8 +37,7 @@ module.exports = function(app) {
 	});
 
 	app.post("/delete_set_record", (req, res)=>{
-		//var set_id = req.body.set_id;
-		var set_id = 311;
+		var set_id = req.body.set_id;
 
 		delete_sets.erase_set_note(set_id, (result)=>{
 			delete_sets.erase_set_conditions(set_id, (result)=>{
@@ -47,7 +46,7 @@ module.exports = function(app) {
 				})
 			})
 		})
-	})
+	});
 
 	// end controls router
 };

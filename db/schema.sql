@@ -39,3 +39,10 @@ CREATE TABLE `set_notes` (
     `content` TEXT,
     FOREIGN KEY (`set_id`) REFERENCES `sets`(`set_id`)
 );
+
+CREATE TABLE `auth` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(255) NOT NULL,
+    `hash` CHAR(60) NOT NULL,
+    UNIQUE (`username`)
+);
