@@ -55,7 +55,7 @@ function barbell_control (weight, opposite) {
 $(document).ready(()=>{
 	$("#enter-box").hide();
 	$("#log-box").hide();
-	$('[data-toggle="popover"]').popover();
+	$('[data-toggle="tooltip"]').tooltip()
 
 	// SWITCH
 

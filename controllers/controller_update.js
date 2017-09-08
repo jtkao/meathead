@@ -3,6 +3,7 @@ var sets = require("../models/model_update.js");
 module.exports = function(app) {
 	// UPDATE SET DATA
 
+	// ROUTES TO BE IMPLEMENTED LATER
 	app.post("/update_set_movement", (req, res)=>{
 		var set_id = 1;
 		var updated_movement_id = 3;

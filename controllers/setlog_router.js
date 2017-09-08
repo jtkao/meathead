@@ -8,7 +8,7 @@ function to_view(response, result){
 		set.set_date = date_to_string;
 	});
 
-	response.send(result);
+	response.send(result.reverse());
 }
 
 module.exports = function(app) {
@@ -57,7 +57,7 @@ module.exports = function(app) {
 			to_view(res, result);
 		})
 	});
-
+	// not yet implemented
 	app.post("/find_1rm", (req,res)=>{
 		var movement_id = req.body.movement_id;
 
