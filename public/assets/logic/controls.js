@@ -22,4 +22,14 @@ $(document).ready(()=>{
 			data: data_condition
 		});
 	})
+
+	$("#dummy").on("click", (event)=>{
+		console.log("dummy")
+		var dummy = {};
+		$.ajax({
+			url: "/delete_set_condition",
+			method: "POST",
+			data: dummy
+		});
+	})
 })

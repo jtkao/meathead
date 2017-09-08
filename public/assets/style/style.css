@@ -14,6 +14,10 @@ body,html {
 	color: white;
 }
 
+#footer-box {
+	text-align: center;
+}
+
 #main-body {
 	margin-top: 70px;
 	background-color: gainsboro;

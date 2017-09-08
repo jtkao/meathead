@@ -12,6 +12,7 @@ var orm_create = {
 	// CREATE
 	// add_record
 	new_set: function(movement_id, weight, no_sets, no_reps, rpe, callback) {
+		// 0 is the default select option value (no rpe)
 		if (rpe.length === 0) {
 			rpe = null
 		}
