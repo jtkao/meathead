@@ -189,6 +189,6 @@ button.input-search {
 	background-color: mediumaquamarine;
 }
 
-#good-log-alert {
+#good-log-alert, #good-commentary-alert {
 	background-color: palegreen;
 }

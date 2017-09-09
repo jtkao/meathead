@@ -56,11 +56,18 @@ function note_ajax(route, req) {
 		method: "POST",
 		data: req
 	}).done((response)=>{
-		console.log("NOTE RESPONSE", response)	
+		console.log("NOTE RESPONSE", response)
+		$("#setlog-modal").modal('hide');
+		$("#good-commentary-alert").show();
 	})
 }
 
 $(document).ready(()=>{
+	$("#good-commentary-alert").hide();
+	$("[data-hide]").on("click", ()=>{
+        $("#good-commentary-alert").hide();
+    });
+
 	// get NOTES for a set, load modal with data, **prepare form for user input**
 	$("#data-results-body").on("click", "button.get-notes",(me)=>{
 		var set_id = me.target.value;
@@ -73,6 +80,7 @@ $(document).ready(()=>{
 	});
 	// SUBMIT REQUEST containing user input to ADD CONDITION
 	$("#add-set-condition").on("submit", (event)=>{ 
+		event.preventDefault(); 
 		var set_id = $("#submit-condition-id").val();
 		var condition_id = $("#condition-selection").val();
 
@@ -89,11 +97,14 @@ $(document).ready(()=>{
 			data: request
 		}).done((response)=>{
 			console.log("SUCCESSFUL CONDITION ADD", response);
+			$("#setlog-modal").modal('hide');
+			$("#good-commentary-alert").show();
 		})
 	});
 
 	// SUBMIT REQUEST containing user input to CREATE or UPDATE NOTE 
-	$("#add-set-note").on("submit", (event)=>{ 
+	$("#add-set-note").on("submit", (event)=>{
+		event.preventDefault(); 
 		var set_id = $("#submit-condition-id-note").val();
 		var content = $("#note-content").val();
 		var request = {

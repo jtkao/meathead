@@ -1,4 +1,9 @@
 $(document).ready(()=>{
+	$("#good-delete-alert").hide();
+	$("[data-hide]").on("click", ()=>{
+        $("#good-delete-alert").hide();
+    });
+
 	$("#add-t-movements").on("submit", (event)=>{ 
 		event.preventDefault();
 		var movement = $("#t-movements-input").val().trim().toUpperCase();
@@ -44,6 +49,8 @@ $(document).ready(()=>{
 			console.log(response)
 		})
 		
+		$("#good-delete-alert-message").html(set_id);
+		$("#good-delete-alert").show();
 	});
 
 });
