@@ -194,3 +194,7 @@ button.input-search {
 #good-log-alert, #good-commentary-alert {
 	background-color: palegreen;
 }
+
+.control-btn {
+	margin-left: 5px;
+}
