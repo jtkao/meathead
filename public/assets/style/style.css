@@ -75,7 +75,6 @@ body,html {
 
 #repup, #repdown {
 	border: 1px solid black;
-	padding: 20px;
 	color: white;
 	background-color: darkviolet;
 }
@@ -86,9 +85,19 @@ body,html {
 
 #setup, #setdown {
 	border: 1px solid black;
-	padding: 20px;
 	color: white;
 	background-color: deeppink;
+}
+
+#repup, #setup {
+	padding: 15px;
+}
+
+#setdown, #repdown {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 18px;
+	padding-right:18px;
 }
 
 
