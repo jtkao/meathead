@@ -61,6 +61,7 @@ $(document).ready(()=>{
 	// get all sets for a single workout session (date)
 	$("#get-date").on("submit", (event)=>{ event.preventDefault();
 		var set_date = $("#date-input").val()
+		console.log(set_date)
 		$.ajax({
 			url: "/find_sets_on_date",
 			method: "POST",

@@ -38,6 +38,13 @@ var model_update = {
 		});
 	},
 	//
+	update_date: function(set_id, updated_date, callback) {
+		orm_update.edit_set_date(set_id, updated_date, (result)=>{
+			callback(result);
+			return result;
+		});
+	},
+	//
 	update_notes: function(set_id, updated_content, callback) {
 		console.log("MODEL:", set_id, updated_content);
 		orm_update.edit_set_notes(set_id, updated_content, (result)=>{

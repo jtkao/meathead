@@ -28,7 +28,10 @@ module.exports = function(app) {
 	});
 
 	app.get("/controls", (req, res)=>{
-		res.render("controls");
+
+		read_sets.return_ids((ids)=>{
+			res.render("controls", {"setid": ids})
+		})
 	});
 
 	app.post("/authenticate", (req, res)=>{

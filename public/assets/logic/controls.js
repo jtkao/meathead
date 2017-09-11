@@ -1,7 +1,9 @@
 $(document).ready(()=>{
 	$("#good-delete-alert").hide();
+	$("#update-setdate-alert").hide();
 	$("[data-hide]").on("click", ()=>{
         $("#good-delete-alert").hide();
+        $("#update-setdate-alert").hide();
     });
 
 	$("#add-t-movements").on("submit", (event)=>{ 
@@ -46,11 +48,32 @@ $(document).ready(()=>{
 			method: "POST",
 			data: {"set_id": set_id}
 		}).then((response)=>{
-			console.log(response)
-		})
+			console.log(response);
+		});
 		
 		$("#good-delete-alert-message").html(set_id);
 		$("#good-delete-alert").show();
+	});
+
+	$("#update-setdate-box").on("submit", (event)=>{ 
+		event.preventDefault();
+		var set_date = $("#update-setdate-date-input").val();
+		var set_id = $("#update-setdate-id-input").val();
+
+		$.ajax({
+			url: "update_setdate",
+			method: "POST",
+			data: {
+				"set_id": set_id,
+				"set_date": set_date
+			}
+		}).then((response)=>{
+			console.log(response);
+		});
+
+		$("#update-setdate-alert-id").html(set_id + " ");
+		$("#update-setdate-alert-date").html(" " + set_date);
+		$("#update-setdate-alert").show();
 	});
 
 });

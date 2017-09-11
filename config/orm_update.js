@@ -37,6 +37,11 @@ var orm_update = {
 		execute(query_string, callback);
 	},
 	//
+	edit_set_date: function(set_id, updated_date, callback) {
+		var query_string = "UPDATE `sets` SET `set_date`='" + updated_date + "' WHERE `set_id`=" + set_id + ";";
+		execute(query_string, callback);
+	},
+	//
 	edit_set_notes: function(set_id, updated_content, callback) {
 		var query_string = 'UPDATE `set_notes` SET `content`="' + updated_content + '" WHERE `set_id`=' + set_id + ';';
 		execute(query_string, callback);

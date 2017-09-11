@@ -12,6 +12,14 @@
 	DELETED ALL RECORDS FOR SET ID#<strong id="good-delete-alert-message"></strong>
 </div>
 
+<div class="alert alert-success .alert-dismissible" role="alert" id="update-setdate-alert">
+	 <button type="button" class="close" data-hide="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	CHANGED DATE FOR SET ID#<strong id="update-setdate-alert-id"></strong> 
+	TO  <strong id="update-setdate-alert-date"></strong>
+</div>
+
 <div class="container-fluid" id="auth-box">
 	<div class="card">
 		<div class="card-body">
@@ -40,7 +48,7 @@
 		<div class="card-body">
 			<form id="add-t-movements" class="form-inline">
 				<div class="form-group">
-					<input class="form-control" type="text" id="t-movements-input"></input>
+					<input class="form-control" type="text" id="t-movements-input">
 				</div>
 				<button class="btn btn-default" type="submit"> submit </button>
 			</form>
@@ -56,7 +64,7 @@
 		<div class="card-body">
 			<form id="add-t-conditions" class="form-inline">
 				<div class="form-group">
-					<input class="form-control" type="text" id="t-conditions-input"></input>
+					<input class="form-control" type="text" id="t-conditions-input">
 				</div>
 				<button class="btn btn-default" type="submit"> submit </button>
 			</form>
@@ -71,7 +79,33 @@
 		<div class="card-body">
 			<form id="delete-sets-box" class="form-inline">
 				<div class="form-group">
-					<input class="form-control" type="number" id="delete-sets-input"></input>
+					<select class="form-control" type="number" id="delete-sets-input">
+						{{#each setid}}
+							<option value={{set_id}}> {{set_id}} </option>
+						{{/each}}
+					</select>
+				</div>
+				<button class="btn btn-default" type="submit"> submit </button>
+			</form>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header">
+			change set date
+		</div>
+
+		<div class="card-body">
+			<form id="update-setdate-box" class="form-inline">
+				<div class="form-group">
+					<select class="form-control" type="number" id="update-setdate-id-input">
+						{{#each setid}}
+							<option value={{set_id}}> {{set_id}} </option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="form-group">
+						<input class="form-control input-search" type="date" id="update-setdate-date-input">
 				</div>
 				<button class="btn btn-default" type="submit"> submit </button>
 			</form>

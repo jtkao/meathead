@@ -79,7 +79,13 @@ var model_read = {
 			return result;
 		})
 	},
-
+	//
+	return_ids: function(callback) {
+		orm_read.select_ids((result)=>{
+			callback(result);
+			return result;
+		})
+	},
 	// for auth
 	return_hash: function(callback) {
 		orm_read.select_hash((result)=>{

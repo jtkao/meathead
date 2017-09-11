@@ -1,5 +1,6 @@
 var create_sets = require("../models/model_create.js");
 var delete_sets = require("../models/model_delete.js");
+var update_sets = require("../models/model_update.js");
 
 module.exports = function(app) {
 	// create a new movement in table movements
@@ -51,6 +52,15 @@ module.exports = function(app) {
 		} else {
 			res.send("invalid")
 		}
+	});
+
+	app.post("/update_setdate", (req,res)=>{
+		var set_id = req.body.set_id;
+		var set_date = req.body.set_date;
+
+		update_sets.update_date(set_id, set_date, (result)=>{
+			res.send(result)
+		})
 	});
 
 	// end controls router

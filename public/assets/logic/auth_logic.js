@@ -4,7 +4,6 @@ $(document).ready(()=>{
 
 	$("#login-box").on("submit", (event)=>{ event.preventDefault();
 		var password = $("#password-input").val().trim();
-		console.log(password);
 
 		var cred = {
 			"password": password
