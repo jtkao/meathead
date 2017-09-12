@@ -8,7 +8,7 @@ $(document).ready(()=>{
 	$("#bad-delete-alert").hide();
 	$("#update-setdate-alert").hide();
 	$("[data-hide]").on("click", ()=>{
-        $("#good-delete-alert").hide();
+        $("#set-delete-alert").hide();
         $("#update-setdate-alert").hide();
         $("#bad-delete-alert").hide();
     });
@@ -74,6 +74,7 @@ $(document).ready(()=>{
 				console.log(response);
 				$("#confirm-delete-modal").modal('hide');
 				$("#set-delete-alert-message").html(selected_to_delete);
+				$("#bad-delete-alert").hide();
 				$("#set-delete-alert").show();
 				deleted_this_session.push(selected_to_delete)
 				selected_to_delete = 0;
