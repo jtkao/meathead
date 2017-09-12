@@ -10,8 +10,8 @@ var reps = 0;
 var sets = 1;
 
 function reset() {
-	barbell_accounted = [false, 0];
-	total = 0;
+	barbell_accounted = [true, 45];
+	total = 45;
 	reps = 0;
 	sets = 1;
 
