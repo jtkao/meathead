@@ -34,21 +34,25 @@ function set_commentary(element, message, route, property){
 		}
 		// condition data needs to be loaded with a button to remove 
 		if ((data.length > 1) && (property === "condition_name")) {
+			selected_set_conditions = [];
 			for (var i = 1; i < data.length; i++) {
 				var condition_element = "<p class='remove-condition'>" + data[i]["condition_name"] + "</p>";
 				$("#setlog-modal-body").append(condition_element);
+				selected_set_conditions.push(data[i]["condition_id"]);
 			}
+			console.log("SET CONDITIONS STORED AS STATE", selected_set_conditions)
 		} else if ((data.length > 1) && (property === "content")) {
+			// create element that contains the set note and append to the modal
 			var note_element = "<p>" + data[1]["content"] + "</p>";
 			$("#setlog-modal-body").append(note_element);
 		} else if (data.length === 1) {
+			// default state for sets without selected commentary
 			$("#setlog-modal-body").html("no data");
 		}
-
 		$("#setlog-modal").modal("show");
 
 	})
-}
+};
 // ajax call for creating or updating NOTES
 function note_ajax(route, req) {
 	$.ajax({
@@ -59,12 +63,18 @@ function note_ajax(route, req) {
 		console.log("NOTE RESPONSE", response)
 		$("#setlog-modal").modal('hide');
 	})
-}
+};
+
+// array contains the conditions for the selected set
+// when adding conditions, check to see if condition is in set
+var selected_set_conditions = [];
 
 $(document).ready(()=>{
 	$("#setlog-alert").hide();
+	$("#bad-condition-alert").hide();
 	$("[data-hide]").on("click", ()=>{
         $("#setlog-alert").hide();
+        $("#bad-condition-alert").hide();
     });
 
 	// get NOTES for a set, load modal with data, **prepare form for user input**
@@ -78,30 +88,38 @@ $(document).ready(()=>{
 		set_commentary(set_id, "conditions", "/find_set_conditions", "condition_name");
 	});
 	// SUBMIT REQUEST containing user input to ADD CONDITION
-	$("#add-set-condition").on("submit", (event)=>{ 
+	$("#add-set-condition").on("submit", (event)=>{
+		console.log(selected_set_conditions);
 		event.preventDefault(); 
 		var set_id = $("#submit-condition-id").val();
-		var condition_id = $("#condition-selection").val();
+		var condition_id = parseInt($("#condition-selection").val());
 
-		var request = {
-			"set_id": set_id,
-			"condition_id": condition_id,
+
+		if (selected_set_conditions.includes(condition_id)) {
+			console.log("NOT TODAY SATAN");
+			$("#setlog-modal").modal('hide');
+			$("#bad-condition-alert").show();
+		} else {
+			var request = {
+				"set_id": set_id,
+				"condition_id": condition_id,
+			}
+
+			console.log(request)
+
+			$.ajax({
+				url: "add_set_condition",
+				method: "POST",
+				data: request
+			}).done((response)=>{
+				console.log("SUCCESSFUL CONDITION ADD", response);
+			});
+
+			$("#setlog-modal").modal('hide');
+			$("#setlog-alert-message").html(" UPDATED CONDITIONS FOR ");
+			$("#setlog-alert-id").html(set_id);
+			$("#setlog-alert").show();
 		}
-
-		console.log(request)
-
-		$.ajax({
-			url: "add_set_condition",
-			method: "POST",
-			data: request
-		}).done((response)=>{
-			console.log("SUCCESSFUL CONDITION ADD", response);
-		});
-
-		$("#setlog-modal").modal('hide');
-		$("#setlog-alert-message").html(" UPDATED CONDITIONS FOR ");
-		$("#setlog-alert-id").html(set_id);
-		$("#setlog-alert").show();
 	});
 
 	// SUBMIT REQUEST containing user input to CREATE or UPDATE NOTE 
