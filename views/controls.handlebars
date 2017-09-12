@@ -20,6 +20,14 @@
 	TO<strong id="update-setdate-alert-date"></strong>
 </div>
 
+<div class="alert alert-danger alert-dismissible" role="alert" id="bad-delete-alert">
+	<button type="button" class="close" data-hide="alert" aria-label="Close">
+    	<span aria-hidden="true">&times;</span>
+  	</button>
+	CANNOT DELETE SET THAT DOES NOT EXIST!
+</div>
+
+
 <div class="container-fluid" id="auth-box">
 	<div class="card">
 		<div class="card-body">
@@ -114,4 +122,19 @@
 		</div>
 	</div>
 
+</div>
+
+<div class="modal fade" id="confirm-delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				ARE YOU SURE YOU WANT TO DELETE SET ID#<strong id="confirm-delete-id"></strong>
+      		</div>
+      
+      		<div id="confirm-delete-body" class="modal-body">
+        		<button class="btn btn-xl btn-danger" id="btn-confirm-delete"> YES </button>
+        		<button class="btn btn-xl btn-primary" id="btn-cancel-delete"> NO </button>
+      		</div>
+      		
+    </div>
 </div>

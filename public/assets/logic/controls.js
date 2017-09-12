@@ -1,9 +1,16 @@
+$("#confirm-delete-modal").modal();
+
+var selected_to_delete = 0;
+var deleted_this_session = [];
+
 $(document).ready(()=>{
 	$("#set-delete-alert").hide();
+	$("#bad-delete-alert").hide();
 	$("#update-setdate-alert").hide();
 	$("[data-hide]").on("click", ()=>{
         $("#good-delete-alert").hide();
         $("#update-setdate-alert").hide();
+        $("#bad-delete-alert").hide();
     });
 
 	$("#add-t-movements").on("submit", (event)=>{ 
@@ -40,19 +47,42 @@ $(document).ready(()=>{
 
 	$("#delete-sets-box").on("submit", (event)=>{ 
 		event.preventDefault();
-		var set_id = $("#delete-sets-input").val();
-		console.log("deleting all set record for id#", set_id);
+		var set_id = parseInt($("#delete-sets-input").val());
+		selected_to_delete = set_id;
 
-		$.ajax({
-			url: "delete_set_record",
-			method: "POST",
-			data: {"set_id": set_id}
-		}).then((response)=>{
-			console.log(response);
-		});
-		
-		$("#set-delete-alert-message").html(set_id);
-		$("#set-delete-alert").show();
+		$("#confirm-delete-id").html(set_id);
+		$("#confirm-delete-modal").modal('show');
+	});
+
+
+	$("#btn-cancel-delete").on("click", (event)=>{
+		event.preventDefault();
+		selected_to_delete = 0;
+		$("#confirm-delete-modal").modal('hide');
+	});
+
+	$("#btn-confirm-delete").on("click", (event)=>{
+		event.preventDefault();
+		console.log("selected_to_delete", selected_to_delete)
+
+		if ((selected_to_delete != 0) && !(deleted_this_session.includes(selected_to_delete))) {
+			$.ajax({
+				url: "delete_set_record",
+				method: "POST",
+				data: {"set_id": selected_to_delete}
+			}).then((response)=>{
+				console.log(response);
+				$("#confirm-delete-modal").modal('hide');
+				$("#set-delete-alert-message").html(selected_to_delete);
+				$("#set-delete-alert").show();
+				deleted_this_session.push(selected_to_delete)
+				selected_to_delete = 0;
+			});
+		} else {
+			$("#confirm-delete-modal").modal('hide');
+			$("#set-delete-alert").hide();
+			$("#bad-delete-alert").show();
+		}
 	});
 
 	$("#update-setdate-box").on("submit", (event)=>{ 

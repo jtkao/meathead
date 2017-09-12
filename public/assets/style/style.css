@@ -208,3 +208,7 @@ button.input-search {
 .control-btn {
 	margin-left: 5px;
 }
+
+#confirm-delete-body {
+	text-align: center;
+}
