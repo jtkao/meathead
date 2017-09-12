@@ -212,3 +212,10 @@ button.input-search {
 #confirm-delete-body {
 	text-align: center;
 }
+
+
+@media only screen and (max-width: 500px) {
+    .border-btn {
+    	border: 1px solid black;
+    }
+}
