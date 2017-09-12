@@ -214,7 +214,7 @@ button.input-search {
 }
 
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
     .border-btn {
     	border: 1px solid black;
     }
