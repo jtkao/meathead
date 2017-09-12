@@ -58,14 +58,13 @@ function note_ajax(route, req) {
 	}).done((response)=>{
 		console.log("NOTE RESPONSE", response)
 		$("#setlog-modal").modal('hide');
-		$("#good-commentary-alert").show();
 	})
 }
 
 $(document).ready(()=>{
-	$("#good-commentary-alert").hide();
+	$("#setlog-alert").hide();
 	$("[data-hide]").on("click", ()=>{
-        $("#good-commentary-alert").hide();
+        $("#setlog-alert").hide();
     });
 
 	// get NOTES for a set, load modal with data, **prepare form for user input**
@@ -97,9 +96,12 @@ $(document).ready(()=>{
 			data: request
 		}).done((response)=>{
 			console.log("SUCCESSFUL CONDITION ADD", response);
-			$("#setlog-modal").modal('hide');
-			$("#good-commentary-alert").show();
-		})
+		});
+
+		$("#setlog-modal").modal('hide');
+		$("#setlog-alert-message").html(" UPDATED CONDITIONS FOR ");
+		$("#setlog-alert-id").html(set_id);
+		$("#setlog-alert").show();
 	});
 
 	// SUBMIT REQUEST containing user input to CREATE or UPDATE NOTE 
@@ -119,6 +121,9 @@ $(document).ready(()=>{
 		} else {
 			note_ajax("update_set_note", request);
 		}
+		$("#setlog-alert-message").html(" UPDATED NOTES ");
+		$("#setlog-alert-id").html(set_id);
+		$("#setlog-alert").show();
 	});
 	//end 
 });

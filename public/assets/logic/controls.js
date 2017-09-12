@@ -1,5 +1,5 @@
 $(document).ready(()=>{
-	$("#good-delete-alert").hide();
+	$("#set-delete-alert").hide();
 	$("#update-setdate-alert").hide();
 	$("[data-hide]").on("click", ()=>{
         $("#good-delete-alert").hide();
@@ -51,8 +51,8 @@ $(document).ready(()=>{
 			console.log(response);
 		});
 		
-		$("#good-delete-alert-message").html(set_id);
-		$("#good-delete-alert").show();
+		$("#set-delete-alert-message").html(set_id);
+		$("#set-delete-alert").show();
 	});
 
 	$("#update-setdate-box").on("submit", (event)=>{ 

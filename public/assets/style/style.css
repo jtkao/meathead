@@ -200,8 +200,9 @@ button.input-search {
 	background-color: mediumaquamarine;
 }
 
-#good-log-alert, #good-commentary-alert {
+#setlog-alert, #good-log-alert, #update-setdate-alert {
 	background-color: palegreen;
+	border: springgreen 1px solid;
 }
 
 .control-btn {
