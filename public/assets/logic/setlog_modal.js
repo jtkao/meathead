@@ -1,27 +1,29 @@
 $("#setlog-modal").modal();
 
-// set commentary = [NOTES, CONDITIONS] 
-function set_commentary(element, message, route, property){
-	// SET_ID indicates row in table `sets` 
+// send request querying db for either set_notes or set_conditions
+// then load data into setlog-modal 
+function set_commentary(element, commentary_type, route, property){
 	var set_id = element;
-	console.log(message, set_id)
+	console.log(commentary_type, set_id);
+
 	$.ajax({
 		url: route,
 		method: "POST",
 		datatype: "json",
 		data: {"set_id": set_id}
 	}).done((data)=>{
-		console.log(data)
-		// assign selected SET_ID to both form submit buttons 
+		// LOAD MODAL WITH DATA
+		console.log(data);
+		// MODAL FOOTER (user input)
+		// load form submit buttons with this set_id
 		$(".submit-commentary").val(data[0].set_id)
-		$("#setlog-modal-head").html(message + " for set id #" + data[0].set_id);
+		$("#setlog-modal-head").html(commentary_type + " for set id #" + data[0].set_id);
 		$("#setlog-modal-body").html("");
-		// **conditional toggles form inputs based on type of commentary
-		// 	property CONTENT indicates that this is a NOTE
+		// `content`= notes // `
 		if (property === "content") {
-			// data[1] indicates that NOTE exists for SET_ID
+			// data[1] indicates that NOTE exists for set_id
 			if (data.length > 1) {
-				// update textarea to reflect existing NOTE
+				// load data into form textarea to reflect existing notes
 				$("#note-content").val(data[1]["content"]);
 			} else {
 				$("#note-content").val("");
@@ -32,26 +34,30 @@ function set_commentary(element, message, route, property){
 			$("#add-set-condition").show();
 			$("#add-set-note").hide();
 		}
-		// condition data needs to be loaded with a button to remove 
+		// MODAL BODY (commentary data)
+		// ! to be implemented !
+		// ! condition data needs to be loaded with a button to remove !
+		// IF SET_CONDITIONS EXISTS
 		if ((data.length > 1) && (property === "condition_name")) {
+			// clear previous data
 			selected_set_conditions = [];
 			for (var i = 1; i < data.length; i++) {
+				selected_set_conditions.push(data[i]["condition_id"]);
+
 				var condition_element = "<p class='remove-condition'>" + data[i]["condition_name"] + "</p>";
 				$("#setlog-modal-body").append(condition_element);
-				selected_set_conditions.push(data[i]["condition_id"]);
 			}
-			console.log("SET CONDITIONS STORED AS STATE", selected_set_conditions)
+		// FOR SET_NOTE EXISTS
 		} else if ((data.length > 1) && (property === "content")) {
 			// create element that contains the set note and append to the modal
 			var note_element = "<p>" + data[1]["content"] + "</p>";
 			$("#setlog-modal-body").append(note_element);
+		// IF NO COMMENTARY DATA EXISTS
 		} else if (data.length === 1) {
-			// default state for sets without selected commentary
 			$("#setlog-modal-body").html("no data");
 		}
 		$("#setlog-modal").modal("show");
-
-	})
+	});
 };
 // ajax call for creating or updating NOTES
 function note_ajax(route, req) {
@@ -60,8 +66,7 @@ function note_ajax(route, req) {
 		method: "POST",
 		data: req
 	}).done((response)=>{
-		console.log("NOTE RESPONSE", response)
-		$("#setlog-modal").modal('hide');
+		console.log(response)
 	})
 };
 
@@ -89,31 +94,26 @@ $(document).ready(()=>{
 	});
 	// SUBMIT REQUEST containing user input to ADD CONDITION
 	$("#add-set-condition").on("submit", (event)=>{
-		console.log(selected_set_conditions);
 		event.preventDefault(); 
 		var set_id = $("#submit-condition-id").val();
 		var condition_id = parseInt($("#condition-selection").val());
 
-
+		// duplicate set_conditions for an individual set record will cause duplicate primary key error in db
+		// so check input against array selected_set conditions 
 		if (selected_set_conditions.includes(condition_id)) {
-			console.log("NOT TODAY SATAN");
 			$("#setlog-modal").modal('hide');
 			$("#setlog-alert").hide();
 			$("#bad-condition-alert").show();
 		} else {
-			var request = {
-				"set_id": set_id,
-				"condition_id": condition_id,
-			}
-
-			console.log(request)
-
 			$.ajax({
 				url: "add_set_condition",
 				method: "POST",
-				data: request
+				data: {
+					"set_id": set_id,
+					"condition_id": condition_id
+				}
 			}).done((response)=>{
-				console.log("SUCCESSFUL CONDITION ADD", response);
+				console.log(response);
 			});
 
 			$("#setlog-modal").modal('hide');
@@ -134,13 +134,15 @@ $(document).ready(()=>{
 			"content": content
 		}
 		var modal_body = $("#setlog-modal-body").html();
-		// if modal_body !data, create a new note
+
+		// create new note if it doesnt exist, otherwise update the existing 
 		if (modal_body === "no data") {
 			note_ajax("add_set_note", request);
-		// else update the existing note
 		} else {
 			note_ajax("update_set_note", request);
 		}
+
+		$("#setlog-modal").modal('hide');
 		$("#setlog-alert-message").html(" UPDATED NOTES ");
 		$("#setlog-alert-id").html(set_id);
 		$("#bad-condition-alert").hide();
