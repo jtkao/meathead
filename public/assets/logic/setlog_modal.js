@@ -98,6 +98,7 @@ $(document).ready(()=>{
 		if (selected_set_conditions.includes(condition_id)) {
 			console.log("NOT TODAY SATAN");
 			$("#setlog-modal").modal('hide');
+			$("#setlog-alert").hide();
 			$("#bad-condition-alert").show();
 		} else {
 			var request = {
@@ -118,6 +119,7 @@ $(document).ready(()=>{
 			$("#setlog-modal").modal('hide');
 			$("#setlog-alert-message").html(" UPDATED CONDITIONS FOR ");
 			$("#setlog-alert-id").html(set_id);
+			$("#bad-condition-alert").hide();
 			$("#setlog-alert").show();
 		}
 	});
@@ -141,6 +143,7 @@ $(document).ready(()=>{
 		}
 		$("#setlog-alert-message").html(" UPDATED NOTES ");
 		$("#setlog-alert-id").html(set_id);
+		$("#bad-condition-alert").hide();
 		$("#setlog-alert").show();
 	});
 	//end 
