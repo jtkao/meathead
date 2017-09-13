@@ -1,6 +1,7 @@
 var read_sets = require("../models/model_read.js");
 var create_sets = require("../models/model_create.js");
 
+// for log in
 var bcrypt = require('bcrypt');
 
 module.exports = function(app) {
@@ -8,7 +9,7 @@ module.exports = function(app) {
 	app.get("/", (req,res) =>{
 
 		read_sets.find_movements((movements)=>{
-			res.render("home", {"movement":movements})
+			res.render("home", {"movement":movements});
 		});
 	});
 
@@ -24,14 +25,14 @@ module.exports = function(app) {
 
 		create_sets.add_record(movement_id, weight, no_sets, no_reps, rpe, (result)=>{
 			res.send(result);
-		})
+		});
 	});
 
 	app.get("/controls", (req, res)=>{
 
 		read_sets.return_ids((ids)=>{
-			res.render("controls", {"setid": ids})
-		})
+			res.render("controls", {"setid": ids});
+		});
 	});
 
 	app.post("/authenticate", (req, res)=>{
@@ -39,19 +40,19 @@ module.exports = function(app) {
 		
 		read_sets.return_hash((result)=>{
 			var hash = result[0].hash;
-			console.log("hash", hash)
+			console.log("hash", hash);
 
 			bcrypt.compare(password, hash, (err, result)=>{
 				if (err) {throw err};
 
 				if (result) {
-					res.send("success");
+					res.send("SUCCESS");
 				} else {
 					console.log("NOPE");
-					res.send("fail");
-				}
-			})
-		})
+					res.send("FAIL");
+				};
+			});
+		});
 	});
 
 	//end router

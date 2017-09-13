@@ -1,6 +1,8 @@
 $("#confirm-delete-modal").modal();
 
 var selected_to_delete = 0;
+// prevent sending duplicate delete requests 
+// session is ok becase refreshing page will also refresh `set_id` select options
 var deleted_this_session = [];
 
 $(document).ready(()=>{
@@ -76,7 +78,7 @@ $(document).ready(()=>{
 				$("#set-delete-alert-message").html(selected_to_delete);
 				$("#bad-delete-alert").hide();
 				$("#set-delete-alert").show();
-				deleted_this_session.push(selected_to_delete)
+				deleted_this_session.push(selected_to_delete);
 				selected_to_delete = 0;
 			});
 		} else {
