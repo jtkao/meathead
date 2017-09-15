@@ -19,11 +19,11 @@ function set_commentary(element, commentary_type, route, property){
 		$(".submit-commentary").val(data[0].set_id)
 		$("#setlog-modal-head").html(commentary_type + " for set id #" + data[0].set_id);
 		$("#setlog-modal-body").html("");
-		// `content`= notes // `
+		// `content`= notes 
 		if (property === "content") {
 			// data[1] indicates that NOTE exists for set_id
 			if (data.length > 1) {
-				// load data into form textarea to reflect existing notes
+				// load data into form textarea to reflect existing note for edit
 				$("#note-content").val(data[1]["content"]);
 			} else {
 				$("#note-content").val("");
@@ -37,7 +37,7 @@ function set_commentary(element, commentary_type, route, property){
 		// MODAL BODY (commentary data)
 		// ! to be implemented !
 		// ! condition data needs to be loaded with a button to remove !
-		// IF SET_CONDITIONS EXISTS
+		// IF SET_CONDITIONS EXISTS ***
 		if ((data.length > 1) && (property === "condition_name")) {
 			// clear previous data
 			selected_set_conditions = [];
@@ -47,7 +47,7 @@ function set_commentary(element, commentary_type, route, property){
 				var condition_element = "<p class='remove-condition'>" + data[i]["condition_name"] + "</p>";
 				$("#setlog-modal-body").append(condition_element);
 			}
-		// FOR SET_NOTE EXISTS
+		// IF SET_NOTE EXISTS ***
 		} else if ((data.length > 1) && (property === "content")) {
 			// create element that contains the set note and append to the modal
 			var note_element = "<p>" + data[1]["content"] + "</p>";

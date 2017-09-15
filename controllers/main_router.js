@@ -46,7 +46,7 @@ module.exports = function(app) {
 				if (err) {throw err};
 
 				if (result) {
-					res.send("SUCCESS");
+					res.send("SUCCESS_SUCCESS");
 				} else {
 					console.log("NOPE");
 					res.send("FAIL");

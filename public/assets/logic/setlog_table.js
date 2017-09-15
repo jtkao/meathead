@@ -3,20 +3,19 @@ function populate(data) {
 	$("#data-results-body").html("");
 	// generate table elements loaded with response data
 	data.forEach((set)=>{
-		var raw = "<tr class='table-data'>"
-		raw += '<td>' + set.movement_name + '</td>'
-		raw += '<td>' + set.weight + '</td>'
-		raw += '<td>' + set.no_sets + '</td>'
-		raw += '<td> x </td>'
-		raw += '<td>' + set.no_reps + '</td>'
-		raw += '<td>' + set.set_date + '</td>'
-		raw += '<td> <button class="btn get-notes" value=' + set.set_id + '> notes </button> </td>'
-		raw += '<td> <button class="btn get-conditions" value=' + set.set_id + '> conditions </button> </td>'
+		var raw = "<tr class='table-data'>";
+		raw += '<td>' + set.movement_name + '</td>';
+		raw += '<td>' + set.weight + '</td>';
+		raw += '<td>' + set.no_sets + '</td>';
+		raw += '<td> x </td>';
+		raw += '<td>' + set.no_reps + '</td>';
+		raw += '<td>' + set.set_date + '</td>';
+		raw += '<td> <button class="btn get-notes" value=' + set.set_id + '> notes </button> </td>';
+		raw += '<td> <button class="btn get-conditions" value=' + set.set_id + '> conditions </button> </td>';
 		raw += '</tr>'
 		//console.log(raw)
 		$("#data-results-body").append(raw);
-		
-	})
+	});
 };
 
 $(document).ready(()=>{
