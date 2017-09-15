@@ -56,7 +56,6 @@ $(document).ready(()=>{
 		$("#confirm-delete-modal").modal('show');
 	});
 
-
 	$("#btn-cancel-delete").on("click", (event)=>{
 		event.preventDefault();
 		selected_to_delete = 0;
@@ -73,7 +72,7 @@ $(document).ready(()=>{
 				method: "POST",
 				data: {"set_id": selected_to_delete}
 			}).then((response)=>{
-				console.log(response);
+				console.log("DELETE SET SUCCESS", response);
 				$("#confirm-delete-modal").modal('hide');
 				$("#set-delete-alert-message").html(selected_to_delete);
 				$("#bad-delete-alert").hide();
@@ -99,14 +98,14 @@ $(document).ready(()=>{
 			data: {
 				"set_id": set_id,
 				"set_date": set_date
+			},
+			success: (response)=>{
+				console.log("UPDATE SETDATE SUCCESS", response);
+				$("#update-setdate-alert-id").html(set_id + " ");
+				$("#update-setdate-alert-date").html(" " + set_date);
+				$("#update-setdate-alert").show();
 			}
-		}).then((response)=>{
-			console.log(response);
-		});
-
-		$("#update-setdate-alert-id").html(set_id + " ");
-		$("#update-setdate-alert-date").html(" " + set_date);
-		$("#update-setdate-alert").show();
+		})
 	});
 
 });

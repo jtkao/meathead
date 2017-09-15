@@ -64,10 +64,16 @@ function note_ajax(route, req) {
 	$.ajax({
 		url: route,
 		method: "POST",
-		data: req
-	}).done((response)=>{
-		console.log(response)
-	})
+		data: req,
+		success: (response)=>{
+			console.log("UPDATE NOTE SUCCESS", response)
+			$("#setlog-modal").modal('hide');
+			$("#setlog-alert-message").html(" UPDATED NOTES ");
+			$("#setlog-alert-id").html(req.set_id);
+			$("#bad-condition-alert").hide();
+			$("#setlog-alert").show();
+		}
+	});
 };
 
 // array contains the conditions for the selected set
@@ -111,17 +117,17 @@ $(document).ready(()=>{
 				data: {
 					"set_id": set_id,
 					"condition_id": condition_id
+				},
+				success: (response)=>{
+					console.log("ADD SET SUCCESS", response);
+					$("#setlog-modal").modal('hide');
+					$("#setlog-alert-message").html(" UPDATED CONDITIONS FOR ");
+					$("#setlog-alert-id").html(set_id);
+					$("#bad-condition-alert").hide();
+					$("#setlog-alert").show();
 				}
-			}).done((response)=>{
-				console.log(response);
 			});
-
-			$("#setlog-modal").modal('hide');
-			$("#setlog-alert-message").html(" UPDATED CONDITIONS FOR ");
-			$("#setlog-alert-id").html(set_id);
-			$("#bad-condition-alert").hide();
-			$("#setlog-alert").show();
-		}
+		};
 	});
 
 	// SUBMIT REQUEST containing user input to CREATE or UPDATE NOTE 
@@ -141,12 +147,6 @@ $(document).ready(()=>{
 		} else {
 			note_ajax("update_set_note", request);
 		}
-
-		$("#setlog-modal").modal('hide');
-		$("#setlog-alert-message").html(" UPDATED NOTES ");
-		$("#setlog-alert-id").html(set_id);
-		$("#bad-condition-alert").hide();
-		$("#setlog-alert").show();
 	});
 	//end 
 });

@@ -16,7 +16,7 @@ $(document).ready(()=>{
 		}).then((data)=>{
 			console.log(data)
 
-			if (data === "success") {
+			if (data === "SUCCESS") {
 				$("#bad-password-alert").hide();
 				$("#controls-box").show();
 				$("#auth-box").hide();

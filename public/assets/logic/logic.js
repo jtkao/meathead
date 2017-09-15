@@ -202,15 +202,17 @@ $(document).ready(()=>{
 						return rpe
 					}
 				}
+			},
+			success: (response)=>{
+				console.log("ADD SET SUCCESS", response);
+				$("#good-log-alert-message").html(total + " " + sets + " x " + reps);
+				$("#good-log-alert").show();
+
+				reset();
+				$("#enter-box").hide();
+				$("#home-modal").modal("hide");
 			}
 		});
-
-		$("#good-log-alert-message").html(total + " " + sets + " x " + reps);
-		$("#good-log-alert").show();
-
-		reset();
-		$("#enter-box").hide();
-		$("#home-modal").modal("hide");
 	});
 
 	$("#new-movement-form").on("submit", ()=>{
